@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import logo from '../assets/wit-logo.png'
+import ThemeToggle from './ThemeToggle'
 
 const LINKS = [
   { to: '/research', label: 'Research' },
@@ -19,8 +20,8 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-paper">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8 lg:py-5">
-        <Link to="/" className="shrink-0">
-          <img src={logo} alt="WIT — Centre for Water Informatics & Technology, LUMS" className="h-8 w-auto sm:h-9 lg:h-10" />
+        <Link to="/" className="shrink-0 rounded bg-white px-2 py-1.5">
+          <img src={logo} alt="WIT — Centre for Water Informatics & Technology, LUMS" className="h-7 w-auto sm:h-8 lg:h-9" />
         </Link>
 
         <nav className="hidden items-center gap-7 text-[14px] text-body lg:flex lg:text-[15px]">
@@ -37,15 +38,18 @@ export default function Nav() {
           ))}
         </nav>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          className="text-ink lg:hidden"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle className="hidden lg:flex" />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            className="text-ink lg:hidden"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -66,6 +70,10 @@ export default function Nav() {
                 </NavLink>
               </li>
             ))}
+            <li className="mt-2 flex items-center justify-between border-t border-border px-2 pt-3">
+              <span className="text-[14px] text-body">Theme</span>
+              <ThemeToggle />
+            </li>
           </ul>
         </nav>
       )}

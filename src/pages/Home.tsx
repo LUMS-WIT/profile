@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import About from '../components/About'
+import SystemPressures from '../components/SystemPressures'
 import TeaserSection from '../components/TeaserSection'
 import { researchDomains, techProducts, impactStories, newsItems } from '../data/content'
 import { techPhoto, storyPhoto, heroPhoto } from '../lib/photos'
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <SystemPressures />
       <About />
 
       <TeaserSection eyebrow="Research" title="Water as a system" viewAllHref="/research" viewAllLabel="All research themes" surface>

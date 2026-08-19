@@ -10,7 +10,7 @@ export default function Hero() {
     <section className="relative overflow-hidden">
       <div className="relative h-[560px] w-full bg-river-dark sm:h-[640px] lg:h-[720px]">
         {bg && <img src={bg} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-ink/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-panel/85 via-panel/35 to-panel/10" />
 
         <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-end px-6 pb-16 lg:px-8 lg:pb-20">
           <motion.h1
@@ -40,7 +40,7 @@ export default function Hero() {
           >
             <Link
               to="/research"
-              className="rounded bg-white px-6 py-3 text-[14px] font-medium text-ink transition-colors hover:bg-white/90 lg:px-7 lg:py-3.5 lg:text-[15px]"
+              className="rounded bg-white px-6 py-3 text-[14px] font-medium text-panel transition-colors hover:bg-white/90 lg:px-7 lg:py-3.5 lg:text-[15px]"
             >
               Explore research
             </Link>

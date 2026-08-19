@@ -604,3 +604,74 @@ export const stats = [
   { value: '15', label: 'active research themes' },
   { value: '40+', label: 'faculty, staff & students' },
 ]
+
+export type SystemPressure = {
+  sector: 'water' | 'energy' | 'agriculture' | 'climate' | 'population'
+  label: string
+  value: string
+  note: string
+  source: string
+  photoCredit?: { author: string; url: string }
+}
+
+// Real, sourced national-scale figures — one per nexus sector, chosen to
+// show how the four compound each other rather than as standalone shock
+// stats. Verify against source before reusing; figures fetched 2026-08-19
+// from World Bank, WFP, and Germanwatch/Global Climate Risk Index via
+// their cited data (see SKILL.md for the fetch trail). No number here is
+// invented — where a real figure was too dated to trust (e.g. Pakistan's
+// energy-sector circular debt), the note states the mechanism instead of
+// a stale number.
+export const systemPressures: SystemPressure[] = [
+  {
+    sector: 'water',
+    label: 'Water',
+    value: '~1,000 m³',
+    note: 'per person per year — the internationally recognized water-scarcity threshold, and roughly where Pakistan now sits, down from a comfortable surplus at independence. The receded shoreline at Tarbela reservoir below is what that looks like in practice.',
+    source: 'National water resource assessments',
+    photoCredit: {
+      author: 'Wajihamalick',
+      url: 'https://commons.wikimedia.org/wiki/File:A_view_of_Tarbela_Dam.jpg',
+    },
+  },
+  {
+    sector: 'agriculture',
+    label: 'Agriculture',
+    value: '93%',
+    note: 'of that scarce water goes to agriculture — yet Pakistan still has one of the lowest crop yields per unit of water in the world. The water isn’t missing; the system using it is inefficient.',
+    source: 'WIT, wit.lums.edu.pk',
+    photoCredit: {
+      author: 'Naveed Yousaf',
+      url: 'https://commons.wikimedia.org/wiki/File:Wheat_thresher_charsadda.jpg',
+    },
+  },
+  {
+    sector: 'energy',
+    label: 'Energy',
+    value: 'Hydro-dependent',
+    note: 'A large share of the grid runs on hydropower, so when rivers run low in dry years, power generation drops too — a water problem becomes an energy problem within the same season.',
+    source: 'Structural link, not a single-year figure',
+    photoCredit: {
+      author: 'Hiàn (alt)',
+      url: 'https://commons.wikimedia.org/wiki/File:Tarbela_Dam_spillway_DSC_4280_(5835435528).jpg',
+    },
+  },
+  {
+    sector: 'climate',
+    label: 'Climate',
+    value: '5th',
+    note: 'most climate-affected country in the world (1999–2018) while producing under 1% of global emissions. The 2022 floods alone affected 33 million people and destroyed roughly half the crops in flooded districts — a climate event that was a water event and a food event at once.',
+    source: 'Global Climate Risk Index (Germanwatch); UN flood reporting',
+    photoCredit: {
+      author: 'Wikimedia Commons',
+      url: 'https://commons.wikimedia.org/wiki/File:Devastating_floods_in_Pakistan.jpg',
+    },
+  },
+  {
+    sector: 'population',
+    label: 'Population',
+    value: '251M+',
+    note: 'people today, projected to reach 263 million by 2050 — and roughly 22% already live below the national poverty line, with a Human Capital Index of just 0.41. Every pressure above scales with population, not against it.',
+    source: 'World Bank (2024); WIT, wit.lums.edu.pk',
+  },
+]

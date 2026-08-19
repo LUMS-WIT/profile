@@ -1,11 +1,5 @@
 import { motion } from 'framer-motion'
 
-const CHALLENGE_STATS = [
-  { value: '93%', label: 'of Pakistan’s water goes to agriculture' },
-  { value: '263M', label: 'projected population by 2050' },
-  { value: 'Lowest', label: 'crop yield per unit of water, globally' },
-]
-
 export default function About() {
   return (
     <section className="border-b border-border py-16 sm:py-24">
@@ -36,18 +30,6 @@ export default function About() {
               for water management.
             </p>
           </div>
-
-          <p className="mt-10 text-[15px] font-medium text-ink lg:text-base">
-            Why this is a systems problem, not a single fix
-          </p>
-          <dl className="mt-4 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-3">
-            {CHALLENGE_STATS.map((stat) => (
-              <div key={stat.label} className="bg-paper p-6">
-                <dd className="text-3xl font-semibold text-river lg:text-4xl">{stat.value}</dd>
-                <dt className="mt-1.5 text-[13px] leading-snug text-body lg:text-sm">{stat.label}</dt>
-              </div>
-            ))}
-          </dl>
         </div>
       </motion.div>
     </section>

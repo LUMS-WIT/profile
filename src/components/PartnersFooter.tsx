@@ -2,7 +2,7 @@ import { contact } from '../data/content'
 
 export default function PartnersFooter() {
   return (
-    <footer className="bg-ink py-16 text-white lg:py-20">
+    <footer className="bg-panel py-16 text-white lg:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <div>
@@ -14,7 +14,7 @@ export default function PartnersFooter() {
           </div>
           <a
             href={`mailto:${contact.email}`}
-            className="rounded bg-white px-6 py-3.5 text-[14px] font-medium text-ink transition-colors hover:bg-white/90 lg:text-[15px]"
+            className="rounded bg-white px-6 py-3.5 text-[14px] font-medium text-panel transition-colors hover:bg-white/90 lg:text-[15px]"
           >
             {contact.email}
           </a>

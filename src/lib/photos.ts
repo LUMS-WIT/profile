@@ -17,6 +17,10 @@ const techModules = import.meta.glob<{ default: string }>(
   '../assets/photos/tech/*.{jpg,jpeg,png,webp}',
   { eager: true },
 )
+const pressureModules = import.meta.glob<{ default: string }>(
+  '../assets/photos/pressures/*.{jpg,jpeg,png,webp}',
+  { eager: true },
+)
 
 function buildMap(modules: Record<string, { default: string }>) {
   const map: Record<string, string> = {}
@@ -31,6 +35,7 @@ function buildMap(modules: Record<string, { default: string }>) {
 const personPhotos = buildMap(personModules)
 const storyPhotos = buildMap(storyModules)
 const techPhotos = buildMap(techModules)
+const pressurePhotos = buildMap(pressureModules)
 
 export function personPhoto(id: string): string | undefined {
   return personPhotos[id]
@@ -42,6 +47,10 @@ export function storyPhoto(id: string): string | undefined {
 
 export function techPhoto(id: string): string | undefined {
   return techPhotos[id]
+}
+
+export function pressurePhoto(id: string): string | undefined {
+  return pressurePhotos[id]
 }
 
 export function heroPhoto(): string | undefined {

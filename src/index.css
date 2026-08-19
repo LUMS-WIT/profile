@@ -12,6 +12,12 @@
   --color-river-dark: #0a413c;
   --color-river-tint: #e9f2f0;
 
+  /* Fixed (not theme-dependent) — for the deliberately-always-dark
+     decorative sections (hero photo scrim, footer, the systems-pressure
+     band). These stay dark in both light and dark site themes, so they
+     use their own token rather than the themed `ink`. */
+  --color-panel: #14181b;
+
   /* Sector wayfinding colors — used only as small tags/dots/diagram
      nodes, never as section backgrounds. Water reuses the primary
      brand color since it's WIT's home sector; the other three are
@@ -20,10 +26,27 @@
   --color-sector-energy: #b8791f;
   --color-sector-agriculture: #5f7a3d;
   --color-sector-climate: #5568a8;
+  --color-sector-population: #8a6f4a;
 }
 
 :root {
   color-scheme: light;
+}
+
+/* Dark theme: applied via a `data-theme="dark"` attribute on <html>,
+   toggled manually (see src/lib/theme.ts) and persisted to
+   localStorage — not tied to prefers-color-scheme, though that's used
+   as the initial default before any explicit choice is made. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-ink: #f2f4f3;
+  --color-body: #a7afb6;
+  --color-paper: #14171a;
+  --color-surface: #1b1f24;
+  --color-border: #2b3036;
+  --color-river: #35b0a3;
+  --color-river-dark: #0a413c;
+  --color-river-tint: rgba(53, 176, 163, 0.14);
 }
 
 html {
@@ -36,6 +59,7 @@ body {
   color: var(--color-body);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 ::selection {

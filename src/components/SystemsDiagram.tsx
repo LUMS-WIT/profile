@@ -16,12 +16,18 @@ const CENTER = { x: 150, y: 150 }
 export default function SystemsDiagram({
   size = 260,
   showLabels = true,
+  dark = false,
   className = '',
 }: {
   size?: number
   showLabels?: boolean
+  dark?: boolean
   className?: string
 }) {
+  const lineColor = dark ? 'rgba(255,255,255,0.25)' : 'var(--color-border)'
+  const centerFill = dark ? '#ffffff' : 'var(--color-ink)'
+  const labelFill = dark ? '#ffffff' : 'var(--color-ink)'
+
   return (
     <svg
       viewBox="-50 -20 400 340"
@@ -31,7 +37,7 @@ export default function SystemsDiagram({
       role="img"
       aria-label="Diagram showing water, energy, agriculture, and climate connected as one system"
     >
-      <g stroke="var(--color-border)" strokeWidth="1.5">
+      <g stroke={lineColor} strokeWidth="1.5">
         {NODES.map((node) => (
           <line key={`spoke-${node.key}`} x1={CENTER.x} y1={CENTER.y} x2={node.x} y2={node.y} />
         ))}
@@ -41,7 +47,7 @@ export default function SystemsDiagram({
         })}
       </g>
 
-      <circle cx={CENTER.x} cy={CENTER.y} r="12" fill="var(--color-ink)" />
+      <circle cx={CENTER.x} cy={CENTER.y} r="12" fill={centerFill} />
 
       {NODES.map((node) => (
         <g key={node.key}>
@@ -53,7 +59,7 @@ export default function SystemsDiagram({
               textAnchor={node.anchor}
               fontSize="13"
               fontWeight="500"
-              fill="var(--color-ink)"
+              fill={labelFill}
               className="font-sans"
             >
               {node.label}
