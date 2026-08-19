@@ -1,144 +1,165 @@
 ---
 name: wit-portfolio-site
-description: Context and conventions for the WIT Lab (LUMS) portfolio website prototype — use when building, editing, or deploying this React site, or when asked about its content model, design system, or GitHub Pages hosting.
+description: Context and conventions for the WIT (Centre for Water Informatics & Technology, LUMS) portfolio website — use when building, editing, or deploying this React site, or when asked about its content model, information architecture, design system, or hosting.
 ---
 
-# WIT Lab portfolio site
+# WIT portfolio site
 
 ## Why this exists
 
-Built after a meeting with the Brave project team (DAI) who asked WIT
-for a portfolio covering: hydrology tools training, sensor/field work
-(what sensors, what parameters, where, which partners), and an overall
-lab portfolio (capabilities, research domains, key people, projects).
-Existing material was scattered across slides/proposals; the LUMS
-Drupal site was judged not effective for this. Decision: build a
-focused, high-impact single-page site rather than dumping everything.
+Built after a meeting with the Brave project team (DAI) who asked WIT for
+a portfolio covering: hydrology tools training, sensor/field work (what
+sensors, what parameters, where, which partners), and an overall lab
+portfolio (capabilities, research domains, key people, projects).
+Existing material was scattered across slides/proposals; the LUMS Drupal
+site (`wit.lums.edu.pk`) was judged not effective for this pitch.
 
-Future integration target is `wit.lums.edu.pk` (Drupal) — out of scope
-for now. This repo is a **standalone React prototype**, not wired into
-Drupal.
+This is a **standalone React site**, not wired into the Drupal site.
+Content is curated and cross-linked to `wit.lums.edu.pk` where we don't
+reproduce something in full (e.g. the complete people list, the full
+15-theme research list) — the goal is focused communication, not a full
+CMS mirror. Folding this into Drupal later is an open question, not
+started.
 
-## Stack
+## Core message — read this before editing copy
 
-- Vite + React 19 + TypeScript
-- Tailwind CSS v4 via `@tailwindcss/vite` (tokens live in `@theme` block
-  in `src/index.css`, not a `tailwind.config.js` — v4 is CSS-first)
-- `framer-motion` for the hero reveal, `lucide-react` available for
-  icons, `recharts` installed but not yet used (candidate for a real
-  sensor-data chart once live telemetry exists)
-- No router — single scrolling page with anchor-link nav
+The site's framing is **systems thinking about water**, not
+instrumentation. WIT studies water, energy, agriculture, and climate as
+one connected system; field sensors are how the data gets collected, not
+the headline. This was an explicit correction mid-project — an earlier
+draft led with "we put instruments where the water is" and got pushed
+back on for foregrounding the wrong thing. Keep hero/about copy and
+section framing systems-first; technology/sensors get their own page,
+not the front-page thesis.
 
-## Content model — edit this, not the components
+## Content is real, not placeholder
 
-All copy/data lives in [`src/data/content.ts`](../../../src/data/content.ts):
-`researchDomains`, `sensorSites`, `impactStories`, `projects`,
-`trainings`, `people`, `partners`. Every value in that file is
-**placeholder** (marked in a header comment) — names like `[Name]`,
-invented metrics, plausible-but-unverified donors/partners. Before
-this goes in front of anyone external, every field must be checked
-against real WIT records. Components (`src/components/*.tsx`) just map
-over these arrays — add a new project/person/site by adding an entry,
-not by touching a component.
+Every person, project, theme, and news item in `src/data/content.ts` is
+sourced from live fetches of `wit.lums.edu.pk` (dated in the file's
+header comment) — verify against the live site before trusting old
+figures, and re-fetch rather than guess when adding more. Do not
+reintroduce invented names/numbers; if a fact isn't sourced, mark it
+clearly as pending rather than inventing a plausible-sounding one.
 
-`sensorSites` coordinates (`x`, `y`, 0–100) are positions on the
-abstract basin diagram in `SensorNetwork.tsx`, north-to-south — not
-real lat/lon. If real site coordinates are wanted, replace the
-abstract SVG path with an actual basin/Pakistan outline and recompute
-positions.
+Research themes have a two-tier depth model (`ResearchDomain.full`):
+only "Integrated Climate Policy Analysis" has real paragraph-level
+depth (transcribed from `wit.lums.edu.pk/icpa`) — the other five have
+honest one-line summaries plus what-we-do bullets grounded in real
+project titles/funders, and link out to the live site for more. When
+you get real depth for another theme (an `/xyz` page like `/icpa`
+exists for it), set `full: true` and fill in `overview`/`whatWeDo`/
+`collaboration`/`capacityBuilding` the same way ICPA is filled in —
+don't fabricate the shape without the content.
+
+## Stack & architecture
+
+- Vite + React 19 + TypeScript, Tailwind CSS v4 via `@tailwindcss/vite`
+  (tokens live in the `@theme` block in `src/index.css`, not a
+  `tailwind.config.js` — v4 is CSS-first)
+- **React Router** (`HashRouter`, in `main.tsx`) — this is a real
+  multi-page site now, not a single scrolling page. `HashRouter` was
+  chosen specifically because GitHub Pages can't do server-side rewrites
+  for client-side routes; URLs are `#/research/climate-policy` etc. If
+  this ever moves to Vercel/a real server, switch to `BrowserRouter` and
+  drop the `#` — it's a one-line change in `main.tsx`, but do it
+  deliberately, not by accident.
+- `src/App.tsx` defines routes under a shared `Layout` (`Nav` +
+  `<Outlet/>` + footer). `src/pages/*.tsx` are thin route components;
+  most just render the matching `src/components/*.tsx` section. The
+  interesting ones are `Research.tsx` (theme index) and
+  `ResearchTheme.tsx` (per-theme detail, `/research/:id`) — this pair is
+  what gives each research angle a real, shareable, deep-linkable page,
+  which was the point of moving off single-page anchors.
+- `framer-motion` for the hero reveal only — motion is deliberately
+  restrained elsewhere.
+
+## Content model — edit `content.ts`, not the components
+
+All copy/data lives in `src/data/content.ts`. Components and pages just
+map over these arrays/objects — add a project/person/news item/theme by
+adding an entry there, not by touching a component.
+
+## Photos — real, drop-in, not stock
+
+`src/assets/photos/{hero,tech,people,stories}/` hold **real WIT field
+photos** the user supplied directly (not stock) — e.g. `tech/aws.jpg` is
+an actual WIT team installing a weather station on snow;
+`hero/site.jpg` is a real deployed river gauge with an actual data-curve
+overlay. `src/lib/photos.ts` uses `import.meta.glob` to match filenames
+to ids automatically — drop `people/<id>.jpg` or `stories/<id>.jpg`
+(id = the matching entry's `id` in `content.ts`) and it appears with no
+code change. Missing photos fall back to a plain accent panel or
+initials avatar — never a stock substitute. See
+`src/assets/photos/README.md` for the exact convention.
+
+If new photos arrive with descriptive filenames (like `"1 snow melt.jpg"`
+did), rename to the `id`-matching convention and `sips -Z <width>`
+them down before committing — several arrived multi-MB and were resized
+to ~300–550KB. Don't skip this; it's the difference between a fast site
+and a slow one.
 
 ## Design system
 
-Chosen deliberately against the generic AI-portfolio defaults (cream
-+ serif + terracotta; black + neon; broadsheet). Direction: a
-field-instrument / topo-map register — the site should feel like it
-was designed by people who spend time in the field, not a generic
-agency template.
+Deliberately institutional/clean, not the "AI portfolio" look (dark
+hero + gradient + mono-everything was the first draft and got corrected
+— see git history if curious what to avoid repeating). Benchmarked
+against `city.lums.edu.pk`.
 
-- **Palette** (`src/index.css` `@theme`): `ink` #0d1b1c (near-black,
-  used as a real section background, not just text), `paper` #eef1ea,
-  `paper-raised` #e2e7db, `river` #1e6f6b (primary brand teal),
-  `glacier` #4fa3c4 (cryosphere/cool accent), `terracotta` #c85a2b
-  (flood-warning/alert accent — used sparingly, thematically tied to
-  flood alerts, not decorative), `moss` #5c7a52 (agriculture/active-status
-  accent).
-- **Type**: `Fraunces` (display, headings only), `IBM Plex Sans` (body),
-  `IBM Plex Mono` (labels, stats, table data, nav — the "field
-  instrument readout" register). Loaded via Google Fonts `<link>` in
-  `index.html`.
-- **Signature element**: the interactive sensor-network map in
-  `SensorNetwork.tsx` — directly answers the Brave/DAI ask (sensor
-  types, parameters, locations, partners) as one visual instead of a
-  spec sheet.
-- **Motion**: restrained — one orchestrated hero reveal
-  (`framer-motion`), no scroll-jacking or per-card animation elsewhere.
-  `prefers-reduced-motion` respected in `index.css`.
-
-## Section order (App.tsx)
-
-Nav → Hero → About → ResearchDomains → SensorNetwork (signature) →
-ImpactStories → Projects (filterable table) → Trainings → People →
-PartnersFooter (partner logos strip + contact footer).
-
-This order was chosen to lead with credibility (hero stats, domains,
-sensors/impact) before the denser reference material (project list,
-people grid) that donor/partner audiences dig into once already
-convinced.
+- **Palette** (`src/index.css` `@theme`): `ink` #14181b, `body` #444d52,
+  `paper` #ffffff, `surface` #f5f6f4, `border` #e2e5e1, `river` #0f5c56
+  (primary accent), `river-dark` #0a413c, `river-tint` #e9f2f0. No
+  second/decorative accent color — restraint is the point.
+- **Type**: Inter only, weight/size for hierarchy. No display serif, no
+  monospace-for-everything.
+- **Logo**: `src/assets/wit-logo.png` is the real LUMS/WIT lockup — used
+  in `Nav` and available for the footer. Don't replace with text or a
+  generated mark.
+- **Motion**: one hero reveal, `prefers-reduced-motion` respected in
+  `index.css`. Nothing else animates on its own.
 
 ## Running locally
 
 ```bash
 npm install
-npm run dev       # http://localhost:5173
+npm run dev       # http://localhost:5173/wit-portfolio/
 npm run build      # tsc -b && vite build -> dist/
 npm run preview
 ```
 
 ## Deploying to GitHub Pages
 
-`vite.config.ts` sets `base: '/wit-portfolio/'` to match this repo's
-slug — **update this if the repo is renamed**, or Pages assets 404.
+`vite.config.ts` sets `base: '/wit-portfolio/'` to match the repo slug
+— update this if the repo is renamed, or assets 404.
 
-Two ways to publish, either works for a "temporary" prototype:
+Already live via **GitHub Actions** (`.github/workflows/deploy.yml`,
+`actions/deploy-pages`) — pushing to `main` auto-redeploys. Pages source
+must be set to "GitHub Actions" in repo Settings → Pages (one-time,
+already done). A manual `gh-pages` branch path also exists
+(`npm run deploy`) as a fallback but isn't the primary path.
 
-1. **`gh-pages` package** (already installed as a devDependency):
-   ```bash
-   npm run build
-   npx gh-pages -d dist
-   ```
-   Then enable Pages on the repo → Settings → Pages → source =
-   `gh-pages` branch.
+If this moves to Vercel (e.g. to add a CMS/API so non-engineers can
+edit content): change `vite.config.ts`'s `base` to `/`, and switch
+`HashRouter` → `BrowserRouter` in `main.tsx`. Both are one-line changes,
+noted here so they're deliberate, not accidental.
 
-2. **GitHub Actions** (`actions/deploy-pages`) — no `gh-pages` package
-   needed, deploys on every push to `main`. Preferred if this becomes
-   long-lived rather than a one-off demo.
+## SEO
 
-GitHub Pages only serves static files, which is all this is — no
-backend, no env vars, so hosting it there has no real downside beyond
-it being a `github.io` URL until pointed at a custom domain or folded
-into the Drupal site later.
+`index.html` has real title/description (from actual WIT mission text),
+canonical link, OG/Twitter tags, JSON-LD `ResearchOrganization`.
+`public/robots.txt` and `public/sitemap.xml` exist but are minimal
+(single-URL sitemap) since this was built as a single-page app — now
+that it's multi-route, revisit `sitemap.xml` to list real routes
+(`/research`, `/research/climate-policy`, `/projects`, etc.) for better
+indexing, and consider whether `HashRouter` URLs need any special
+handling for search engines (they generally index hash routes poorly —
+this is the main SEO tradeoff of the GitHub Pages hosting choice).
 
-## Photography
+## Open items
 
-`src/assets/{hero-glacier,impact-cryosphere,impact-agriculture}.jpg`
-are stock placeholders (Unsplash License, free for commercial use, no
-attribution required) — generic mountain/lake/wheat-field shots
-chosen to match each section's theme, **not real WIT field photos**.
-The flood impact story deliberately uses an inline SVG hydrograph
-graphic instead of a stock photo (no good river/flood stock match —
-a data graphic fit the "flood early warning" story better anyway).
-Swap the three JPGs for real field photography before this is shown
-externally — stock mountains next to a claim about "our" glacier
-stations would misrepresent the work once anyone looks closely.
-
-## Open items / known placeholders
-
-- All names in `people` are `[Name]` placeholders — needs real
-  designations and headshots (currently text-only cards).
-- `projects`, `sensorSites`, `impactStories` figures are illustrative,
-  not sourced from real WIT records.
-- Hero and two of three impact-story images are stock placeholders —
-  see Photography above.
-- No CMS/markdown pipeline — content edits require a code change to
-  `content.ts`. Fine for a prototype; worth reconsidering if
-  non-engineers need to update it regularly before Drupal integration.
+- Only ICPA has full research-theme depth — the other 5 themes need the
+  same treatment as real source pages become available.
+- People section is curated to 6 (4 directors + 2 leads); full team is
+  ~40, linked out to `wit.lums.edu.pk/people` rather than reproduced.
+- `sitemap.xml` doesn't yet list the real routes (see SEO above).
+- No CMS — content edits require a code change to `content.ts`. Fine
+  for now; reconsider if non-engineers need to update it regularly.

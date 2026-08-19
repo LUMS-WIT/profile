@@ -76,22 +76,19 @@ export const researchDomains: ResearchDomain[] = [
     full: false,
   },
   {
-    id: 'climate-policy',
-    label: 'Integrated Climate Policy Analysis',
+    id: 'systems-modelling',
+    label: 'Systems Modelling',
     summary:
-      'A systems approach linking energy, agriculture, water, land, and climate models to inform national and provincial policy.',
+      'One integrated modelling platform where the nexus, energy, agriculture, and water sectors meet — the analytical engine behind WIT’s Integrated Climate Policy Analysis (ICPA) work.',
     overview: [
-      'WIT works at the intersection of data, science, and policy to build tools that help shape a sustainable, climate-resilient future for Pakistan — an integrated modelling platform connecting energy, agriculture, water, land, and climate systems for medium- and long-term, evidence-based planning.',
-      'Using open-source frameworks, this work analyzes how technology choices, economic growth, and environmental policy interact across sectors, identifying practical pathways to meet Pakistan’s climate goals alongside sustainable development.',
+      'WIT works at the intersection of data, science, and policy to build tools that help shape a sustainable, climate-resilient future for Pakistan — an integrated modelling platform connecting energy, agriculture, water, land, and climate systems for medium- and long-term, evidence-based planning. This is the WIT work published as Integrated Climate Policy Analysis (ICPA).',
+      'Using open-source frameworks — including energy-system models (MESSAGEix), agriculture and land-use models (FABLE), and hydrological and water-resource models — this work analyzes how technology choices, economic growth, and environmental policy interact across sectors, identifying practical pathways to meet Pakistan’s climate goals alongside sustainable development.',
     ],
     whatWeDo: [
-      'Nationally Determined Contributions (NDC) analysis and progress tracking',
-      'Long-term decarbonization and adaptation strategies',
-      'Emission reduction and fair-share assessments',
-      'Technology uptake analysis — solar expansion, electrification, hydrogen',
-      'Energy, agriculture, and water supply/demand projections',
-      'Food and resource security under climate change',
-      'Adaptation pathways for water, energy, and land systems',
+      'Nexus — Nationally Determined Contributions (NDC) analysis, fair-share emission assessments, and adaptation pathways spanning water, energy, and land together',
+      'Energy sector — MESSAGEix energy-system modelling, technology uptake analysis (solar expansion, electrification, hydrogen), decarbonization pathways',
+      'Agriculture sector — food and resource security projections under climate change, agriculture supply/demand modelling',
+      'Water sector — water supply/demand projections and adaptation pathways integrated with the energy and land models above',
     ],
     collaboration: [
       'International Institute for Applied Systems Analysis (IIASA, Austria)',
@@ -542,6 +539,64 @@ export const contact = {
   hours: 'Mon–Fri, 8:30 a.m. to 5:00 p.m.',
   address: 'LUMS, DHA, Lahore, Pakistan',
 }
+
+export type NewsItem = {
+  id: string
+  date: string
+  title: string
+  description?: string
+}
+
+// Real items from /wit-news (fetched 2026-08-19), most recent first.
+export const newsItems: NewsItem[] = [
+  {
+    id: 'n1',
+    date: 'August 3, 2026',
+    title: 'WIT Concludes Summer Mentorship Program 2026',
+    description:
+      'The centre successfully concluded its Summer Mentorship Program 2026 (SMP-26) with final presentations at the Syed Babar Ali School of Science and Engineering.',
+  },
+  {
+    id: 'n2',
+    date: 'July 9, 2026',
+    title: 'Dr. Talha Manzoor Delivers Lecture on Intelligent Control of Complex Water Systems to RISE Interns',
+  },
+  {
+    id: 'n3',
+    date: 'July 1, 2026',
+    title: 'SMALLPAK Summer Internship 2026 Concludes with Research Presentations',
+  },
+  {
+    id: 'n4',
+    date: 'November 17, 2025',
+    title: 'WIT Develops Low-Cost Drone Solutions for Precision Agriculture in Pakistan',
+  },
+  {
+    id: 'n5',
+    date: 'July 31, 2025',
+    title: 'Summer Mentorship Program 2025 Concludes with Final Presentations',
+  },
+  {
+    id: 'n6',
+    date: 'July 8, 2025',
+    title: 'Seminar on Field Methods for Environmental Research',
+  },
+  {
+    id: 'n7',
+    date: 'December 25, 2023',
+    title: "Water Policy in Pakistan Unveiled: WIT Hosts Insightful Book Launch Event",
+  },
+  {
+    id: 'n8',
+    date: 'August 18, 2023',
+    title: 'An Insightful Workshop on Digital Sustainable Agriculture',
+  },
+  {
+    id: 'n9',
+    date: 'February 1, 2023',
+    title: 'WIT Centre Collaborates with European Union for Net-Zero Strategies',
+  },
+]
 
 export const stats = [
   { value: '2016', label: 'Centre established' },
