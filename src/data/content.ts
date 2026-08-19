@@ -478,38 +478,63 @@ export const trainings: Training[] = [
   },
   {
     id: 't2',
+    title: 'Nexus Summit: Harmonizing Energy, Water and Agriculture Systems for a Low Emissions Future',
+    format: 'Summit',
+    date: 'March 2024',
+  },
+  {
+    id: 't3',
     title: 'Digital Sustainable Agriculture',
     format: 'Workshop',
     date: 'July 2023',
   },
   {
-    id: 't3',
-    title: 'Glacier Modelling with the Open Global Glacier Model',
+    id: 't4',
+    title: 'Building Resilience for Data-scarce Water Systems in Pakistan',
+    format: 'Workshop',
+    date: 'July 2023',
+  },
+  {
+    id: 't5',
+    title: 'Integrating Social Science into Irrigation Systems Research',
+    format: 'Workshop',
+    date: 'June 2023',
+  },
+  {
+    id: 't6',
+    title: 'Glacier Modelling: Practical Applications with the Open Global Glacier Model',
     format: 'Practical training',
     date: 'March 2023',
   },
   {
-    id: 't4',
+    id: 't7',
     title: 'Integrated Assessment Modelling for Multi-Sectoral Policy Insights',
     format: 'Workshop',
     date: 'September 2022',
   },
   {
-    id: 't5',
-    title: 'Computer Vision, Machine Learning, and Edge Devices',
+    id: 't8',
+    title: 'Computer Vision, Machine Learning, and its Applications through Edge Devices',
     format: 'Workshop',
     date: 'June 2022',
   },
 ]
 
-// For-credit LUMS courses taught by WIT faculty — shown as a rollup line,
-// not full cards, since these are degree courses rather than open trainings.
-export const courses: string[] = [
-  'SCI103: Introduction to Environmental Science',
-  'ENV244: Modelling the Environment',
-  'EE568: Remote Sensing of the Environment',
-  'ENGG562/ENV462: Climate Change Governance',
-  'SCI302/EE5612: Socio-ecological Systems',
+export type Course = {
+  code: string
+  title: string
+  term: string
+}
+
+// For-credit LUMS courses taught by WIT faculty, from /teaching-and-training.
+export const courses: Course[] = [
+  { code: 'SCI103', title: 'Introduction to Environmental Science', term: 'Fall 2020' },
+  { code: 'SCI302 / EE5612', title: 'Socio-ecological Systems and Sustainability', term: 'Spring 2021' },
+  { code: 'EE100', title: 'Engineering Laboratory — Intelligent Sustainable Systems', term: 'Spring 2021' },
+  { code: 'EE568', title: 'Remote Sensing of the Environment', term: 'Spring 2023' },
+  { code: 'ENV244', title: 'Modelling the Environment', term: 'Spring 2024' },
+  { code: 'EE200', title: 'Sophomore Design Studio', term: 'Spring 2024' },
+  { code: 'ENGG562 / ENV462', title: 'Climate Change Governance: Science, Data & Models', term: 'Fall 2025' },
 ]
 
 export type Person = {

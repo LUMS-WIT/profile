@@ -11,7 +11,7 @@ const LINKS = [
   { to: '/projects', label: 'Projects' },
   { to: '/training', label: 'Training' },
   { to: '/people', label: 'People' },
-  { to: '/news', label: 'News' },
+  { to: '/news', label: 'News & Events' },
 ]
 
 export default function Nav() {

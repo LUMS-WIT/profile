@@ -75,3 +75,113 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Hero "cinemagraph" — a real photograph with restrained, physically
+   plausible motion layered on top (slow drift/zoom, cloud shadows
+   crossing the sky, a light shimmer on the river) rather than an
+   illustrated animation. Every layer is disabled by the
+   prefers-reduced-motion rule above. */
+.hero-kenburns {
+  animation: hero-kenburns 42s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes hero-kenburns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate3d(-1.2%, -0.8%, 0);
+  }
+}
+
+.hero-cloud {
+  position: absolute;
+  top: -10%;
+  height: 140%;
+  border-radius: 999px;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%);
+  filter: blur(18px);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.hero-cloud-a {
+  left: -25%;
+  width: 45%;
+  animation: hero-cloud-drift-a 70s linear infinite;
+}
+
+.hero-cloud-b {
+  left: -40%;
+  width: 32%;
+  top: 6%;
+  animation: hero-cloud-drift-b 95s linear infinite;
+  animation-delay: -20s;
+}
+
+@keyframes hero-cloud-drift-a {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(260%);
+  }
+}
+
+@keyframes hero-cloud-drift-b {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(340%);
+  }
+}
+
+.hero-sun-glow {
+  top: 8%;
+  right: 12%;
+  width: 220px;
+  height: 220px;
+  border-radius: 999px;
+  background: radial-gradient(closest-side, rgba(255, 244, 214, 0.45), rgba(255, 244, 214, 0) 72%);
+  animation: hero-sun-pulse 9s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes hero-sun-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.95;
+  }
+}
+
+.hero-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.35) 48%,
+    rgba(255, 255, 255, 0) 56%
+  );
+  mix-blend-mode: screen;
+  animation: hero-shimmer-sweep 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes hero-shimmer-sweep {
+  0% {
+    transform: translateX(-60%);
+  }
+  40%,
+  100% {
+    transform: translateX(60%);
+  }
+}
