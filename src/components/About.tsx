@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { stats } from '../data/content'
 
 export default function About() {
   return (
@@ -30,6 +31,15 @@ export default function About() {
               for water management.
             </p>
           </div>
+
+          <dl className="mt-10 grid grid-cols-2 gap-6 border-t border-border pt-8 sm:grid-cols-4">
+            {stats.map((stat) => (
+              <div key={stat.label}>
+                <dd className="text-2xl font-semibold text-river lg:text-3xl">{stat.value}</dd>
+                <dt className="mt-1 text-[13px] text-body lg:text-sm">{stat.label}</dt>
+              </div>
+            ))}
+          </dl>
         </div>
       </motion.div>
     </section>

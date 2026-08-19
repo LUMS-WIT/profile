@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { heroPhoto } from '../lib/photos'
-import { stats } from '../data/content'
 
 export default function Hero() {
   const bg = heroPhoto()
@@ -53,15 +52,6 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
-
-      <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-6 border-b border-border px-6 py-10 sm:grid-cols-4 lg:px-8 lg:py-12">
-        {stats.map((stat) => (
-          <div key={stat.label}>
-            <dd className="text-3xl font-semibold text-river lg:text-4xl">{stat.value}</dd>
-            <dt className="mt-1 text-[13px] text-body lg:text-sm">{stat.label}</dt>
-          </div>
-        ))}
-      </dl>
     </section>
   )
 }
