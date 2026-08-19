@@ -82,7 +82,7 @@ export const researchDomains: ResearchDomain[] = [
       'One integrated modelling platform where the nexus, energy, agriculture, and water sectors meet — the analytical engine behind WIT’s Integrated Climate Policy Analysis (ICPA) work.',
     overview: [
       'WIT works at the intersection of data, science, and policy to build tools that help shape a sustainable, climate-resilient future for Pakistan — an integrated modelling platform connecting energy, agriculture, water, land, and climate systems for medium- and long-term, evidence-based planning. This is the WIT work published as Integrated Climate Policy Analysis (ICPA).',
-      'Using open-source frameworks — including energy-system models (MESSAGEix), agriculture and land-use models (FABLE), and hydrological and water-resource models — this work analyzes how technology choices, economic growth, and environmental policy interact across sectors, identifying practical pathways to meet Pakistan’s climate goals alongside sustainable development.',
+      'It runs on open-source frameworks — energy-system models (MESSAGEix), agriculture and land-use models (FABLE), and hydrological and water-resource models — linked together. That lets the team trace how a technology choice, a growth target, or a policy shift in one sector plays out in the others, and find pathways that actually meet Pakistan’s climate goals.',
     ],
     whatWeDo: [
       'Nexus — Nationally Determined Contributions (NDC) analysis, fair-share emission assessments, and adaptation pathways spanning water, energy, and land together',
