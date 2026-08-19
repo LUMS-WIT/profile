@@ -2,22 +2,29 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { researchDomains } from '../data/content'
+import SystemsDiagram from '../components/SystemsDiagram'
 
 export default function Research() {
   return (
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <p className="text-[13px] font-medium tracking-wide text-river uppercase lg:text-sm">Research</p>
-        <h1 className="mt-2 max-w-3xl text-3xl font-semibold text-ink sm:text-4xl lg:text-5xl">
-          Water as a system, not a single problem
-        </h1>
-        <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-body lg:text-lg">
-          WIT studies water through systems thinking — the physical,
-          energy, agricultural, and policy layers that interact across a
-          basin. Instrumentation is how we get the data; it isn't the
-          point. Open a theme below for what we actually do inside it,
-          who we work with, and which projects it runs through.
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-10">
+          <div className="max-w-3xl">
+            <p className="text-[13px] font-medium tracking-wide text-river uppercase lg:text-sm">Research</p>
+            <h1 className="mt-2 text-3xl font-semibold text-ink sm:text-4xl lg:text-5xl">
+              Water as a system, not a single problem
+            </h1>
+            <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-body lg:text-lg">
+              WIT studies water through systems thinking — the physical,
+              energy, agricultural, and policy layers that interact
+              across a basin. Instrumentation is how we get the data;
+              it isn't the point. Open a theme below for what we
+              actually do inside it, who we work with, and which
+              projects it runs through.
+            </p>
+          </div>
+          <SystemsDiagram size={220} className="hidden shrink-0 lg:block" />
+        </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {researchDomains.map((domain, i) => (

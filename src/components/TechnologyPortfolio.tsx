@@ -1,19 +1,27 @@
 import { motion } from 'framer-motion'
 import { techProducts } from '../data/content'
 import { techPhoto } from '../lib/photos'
+import SensingLoopDiagram from './SensingLoopDiagram'
 
 export default function TechnologyPortfolio() {
   return (
     <section className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <p className="text-[13px] font-medium tracking-wide text-river uppercase lg:text-sm">Technology</p>
-        <h1 className="mt-2 max-w-2xl text-3xl font-semibold text-ink sm:text-4xl lg:text-5xl">
-          Sensors and field technology
-        </h1>
-        <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-body lg:text-lg">
-          Instruments WIT designs, deploys, and maintains in the field —
-          each shown with the project it was built for.
-        </p>
+        <div className="flex flex-wrap items-center justify-between gap-10">
+          <div className="max-w-2xl">
+            <p className="text-[13px] font-medium tracking-wide text-river uppercase lg:text-sm">Technology</p>
+            <h1 className="mt-2 text-3xl font-semibold text-ink sm:text-4xl lg:text-5xl">
+              Sensors and field technology
+            </h1>
+            <p className="mt-4 text-[16px] leading-relaxed text-body lg:text-lg">
+              Instruments WIT designs, deploys, and maintains in the field
+              — each shown with the project it was built for. Every
+              instrument here feeds the same loop: sense, transmit,
+              model, decide.
+            </p>
+          </div>
+          <SensingLoopDiagram size={190} className="hidden shrink-0 lg:block" />
+        </div>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {techProducts.map((product, i) => {

@@ -70,8 +70,45 @@ don't fabricate the shape without the content.
   `ResearchTheme.tsx` (per-theme detail, `/research/:id`) — this pair is
   what gives each research angle a real, shareable, deep-linkable page,
   which was the point of moving off single-page anchors.
-- `framer-motion` for the hero reveal only — motion is deliberately
-  restrained elsewhere.
+- `framer-motion` for the hero reveal, plus `whileInView` fade/slide-up
+  on card grids and section headers site-wide — motion is deliberate
+  and repeated, not scattered.
+
+## Signature diagrams — the brand's one repeated visual idea
+
+Benchmarked against peer institutes (IIASA's systems-analysis identity,
+Stockholm Resilience Centre's "planetary boundaries" diagram) — the
+pattern those sites share is one custom diagram repeated as the site's
+visual signature, not stock photography or decoration. WIT's version:
+
+- `SystemsDiagram.tsx` — a 4-node "nexus" (Water/Energy/Agriculture/
+  Climate connected to a center + each other), colored via the
+  `--color-sector-*` tokens in `index.css`. Used on `/research` and the
+  `systems-modelling` theme page.
+- `SensingLoopDiagram.tsx` — a monochrome river-teal closed loop
+  (Sense → Transmit → Model → Decide → back to Sense), representing
+  WIT's own instrumentation method rather than an external sector
+  (hence single-color, not sector-colored). Used on `/technology` and
+  the `iot-telematics` theme page.
+
+`ResearchTheme.tsx` maps domain id → diagram via `THEME_DIAGRAM`. When
+another theme earns real depth (`full: true`), consider whether it
+needs its own diagram in the same visual language before defaulting to
+plain text — that repetition is what makes it read as a brand, not a
+one-off illustration.
+
+Sector colors (`--color-sector-water/energy/agriculture/climate` in
+`index.css`) are scoped strictly to diagram nodes and small tags —
+never section backgrounds. Water reuses the primary brand `river` color
+since it's WIT's home sector.
+
+## Logo & favicon
+
+`src/assets/wit-logo.png` is the real LUMS/WIT lockup (used in `Nav`).
+`public/favicon-mark.png` is the LUMS shield mark cropped out of that
+same file (via a one-off Pillow script, not committed) — if the source
+logo changes, the favicon needs re-cropping by hand; there's no
+build-time pipeline for it.
 
 ## Content model — edit `content.ts`, not the components
 

@@ -11,6 +11,15 @@
   --color-river: #0f5c56;
   --color-river-dark: #0a413c;
   --color-river-tint: #e9f2f0;
+
+  /* Sector wayfinding colors — used only as small tags/dots/diagram
+     nodes, never as section backgrounds. Water reuses the primary
+     brand color since it's WIT's home sector; the other three are
+     scoped strictly to sector-identification contexts. */
+  --color-sector-water: #0f5c56;
+  --color-sector-energy: #b8791f;
+  --color-sector-agriculture: #5f7a3d;
+  --color-sector-climate: #5568a8;
 }
 
 :root {

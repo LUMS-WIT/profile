@@ -1,7 +1,15 @@
+import type { ReactNode } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft } from 'lucide-react'
 import { researchDomains, projects } from '../data/content'
+import SystemsDiagram from '../components/SystemsDiagram'
+import SensingLoopDiagram from '../components/SensingLoopDiagram'
+
+const THEME_DIAGRAM: Record<string, () => ReactNode> = {
+  'systems-modelling': () => <SystemsDiagram size={200} />,
+  'iot-telematics': () => <SensingLoopDiagram size={200} />,
+}
 
 export default function ResearchTheme() {
   const { id } = useParams()
@@ -10,6 +18,7 @@ export default function ResearchTheme() {
   if (!domain) return <Navigate to="/research" replace />
 
   const relatedProjects = projects.filter((p) => domain.projectIds.includes(p.id))
+  const diagram = THEME_DIAGRAM[domain.id]?.()
 
   return (
     <motion.section
@@ -59,6 +68,10 @@ export default function ResearchTheme() {
           </div>
 
           <div>
+            {diagram && (
+              <div className="mb-8 flex justify-center rounded-lg border border-border bg-surface py-6">{diagram}</div>
+            )}
+
             {domain.collaboration && (
               <>
                 <p className="text-[15px] font-medium text-ink lg:text-base">Collaboration</p>
