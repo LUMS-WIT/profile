@@ -1,69 +1,60 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { projects } from '../data/content'
 
-const ALL = 'All domains'
+type Filter = 'All' | 'Ongoing' | 'Completed'
 
 export default function Projects() {
-  const domains = useMemo(() => [ALL, ...new Set(projects.map((p) => p.domain))], [])
-  const [filter, setFilter] = useState(ALL)
-
-  const rows = filter === ALL ? projects : projects.filter((p) => p.domain === filter)
+  const [filter, setFilter] = useState<Filter>('All')
+  const rows = filter === 'All' ? projects : projects.filter((p) => p.status === filter)
+  const ongoingCount = projects.filter((p) => p.status === 'Ongoing').length
 
   return (
-    <section id="projects" className="bg-paper-raised border-b border-ink/10 py-20">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="font-mono text-[13px] uppercase tracking-[0.15em] text-river">Projects</p>
-            <h2 className="font-display mt-2 text-3xl font-medium text-ink md:text-4xl">
-              Scope, donors, and standing — at a glance
-            </h2>
-          </div>
-        </div>
+    <section id="projects" className="border-b border-border py-16 sm:py-20">
+      <div className="mx-auto max-w-6xl px-5">
+        <p className="text-[13px] font-medium tracking-wide text-river uppercase">Projects</p>
+        <h2 className="mt-2 max-w-2xl text-2xl font-semibold text-ink sm:text-3xl">
+          {projects.length} research projects, {ongoingCount} ongoing
+        </h2>
 
-        <div className="mt-8 flex flex-wrap gap-2">
-          {domains.map((d) => (
+        <div className="mt-6 flex gap-2">
+          {(['All', 'Ongoing', 'Completed'] as Filter[]).map((f) => (
             <button
-              key={d}
+              key={f}
               type="button"
-              onClick={() => setFilter(d)}
-              className={`rounded-full border px-3 py-1 font-mono text-[12px] uppercase tracking-wide transition-colors ${
-                filter === d
-                  ? 'border-river bg-river text-paper'
-                  : 'border-ink/20 text-ink/60 hover:border-ink/40 hover:text-ink'
+              onClick={() => setFilter(f)}
+              className={`rounded border px-3 py-1.5 text-[13px] transition-colors ${
+                filter === f
+                  ? 'border-river bg-river text-white'
+                  : 'border-border text-body hover:border-river hover:text-river'
               }`}
             >
-              {d}
+              {f}
             </button>
           ))}
         </div>
 
-        <div className="mt-8 overflow-x-auto rounded-lg border border-ink/10">
-          <table className="w-full min-w-[720px] border-collapse text-left">
+        <div className="mt-6 overflow-x-auto rounded-md border border-border">
+          <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
-              <tr className="font-mono text-[11px] tracking-wide text-ink/45 uppercase">
-                <th className="border-b border-ink/10 px-5 py-3">Project</th>
-                <th className="border-b border-ink/10 px-5 py-3">Domain</th>
-                <th className="border-b border-ink/10 px-5 py-3">Donor</th>
-                <th className="border-b border-ink/10 px-5 py-3">Years</th>
-                <th className="border-b border-ink/10 px-5 py-3">Scope</th>
-                <th className="border-b border-ink/10 px-5 py-3">Status</th>
+              <tr className="bg-surface text-[12px] text-body">
+                <th className="border-b border-border px-4 py-3 font-medium">Project</th>
+                <th className="border-b border-border px-4 py-3 font-medium">PI</th>
+                <th className="border-b border-border px-4 py-3 font-medium">Funder</th>
+                <th className="border-b border-border px-4 py-3 font-medium">Years</th>
+                <th className="border-b border-border px-4 py-3 font-medium">Status</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((p) => (
-                <tr key={p.id} className="bg-paper transition-colors hover:bg-paper-raised">
-                  <td className="border-b border-ink/10 px-5 py-4 font-medium text-ink">{p.name}</td>
-                  <td className="border-b border-ink/10 px-5 py-4 text-[14px] text-ink/60">{p.domain}</td>
-                  <td className="border-b border-ink/10 px-5 py-4 text-[14px] text-ink/60">{p.donor}</td>
-                  <td className="font-mono border-b border-ink/10 px-5 py-4 text-[13px] text-ink/60">{p.years}</td>
-                  <td className="border-b border-ink/10 px-5 py-4 text-[14px] text-ink/60">{p.scope}</td>
-                  <td className="border-b border-ink/10 px-5 py-4">
+                <tr key={p.id} className="text-[14px]">
+                  <td className="border-b border-border px-4 py-3.5 font-medium text-ink">{p.name}</td>
+                  <td className="border-b border-border px-4 py-3.5 text-body">{p.pi}</td>
+                  <td className="border-b border-border px-4 py-3.5 text-body">{p.funder}</td>
+                  <td className="border-b border-border px-4 py-3.5 whitespace-nowrap text-body">{p.years}</td>
+                  <td className="border-b border-border px-4 py-3.5">
                     <span
-                      className={`font-mono rounded-full px-2.5 py-1 text-[11px] uppercase tracking-wide ${
-                        p.status === 'Active'
-                          ? 'bg-moss/15 text-moss'
-                          : 'bg-ink/10 text-ink/50'
+                      className={`rounded px-2 py-0.5 text-[12px] ${
+                        p.status === 'Ongoing' ? 'bg-river-tint text-river' : 'bg-surface text-body'
                       }`}
                     >
                       {p.status}

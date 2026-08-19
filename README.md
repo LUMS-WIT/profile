@@ -1,32 +1,27 @@
-# React + TypeScript + Vite
+# WIT Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Website for the Centre for Water Informatics & Technology (WIT) at LUMS —
+research themes, sensor technology, projects, training, and people.
 
-Currently, two official plugins are available:
+## Develop
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Build & deploy
+
+```bash
+npm run build      # outputs to dist/
+npm run deploy      # builds and pushes dist/ to the gh-pages branch
+```
+
+Auto-deploys to GitHub Pages on every push to `main` via
+`.github/workflows/deploy.yml`.
+
+## Content
+
+All copy and data lives in [`src/data/content.ts`](src/data/content.ts).
+Real photos can be dropped into `src/assets/photos/` — see the README in
+that folder for the naming convention.

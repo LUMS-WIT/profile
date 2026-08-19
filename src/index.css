@@ -1,19 +1,16 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-display: 'Fraunces', 'Iowan Old Style', ui-serif, serif;
-  --font-body: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  --color-ink: #0d1b1c;
-  --color-paper: #eef1ea;
-  --color-paper-raised: #e2e7db;
-  --color-river: #1e6f6b;
-  --color-river-deep: #123f3d;
-  --color-glacier: #4fa3c4;
-  --color-terracotta: #c85a2b;
-  --color-moss: #5c7a52;
-  --color-contour: #b9c4b2;
+  --color-ink: #14181b;
+  --color-body: #444d52;
+  --color-paper: #ffffff;
+  --color-surface: #f5f6f4;
+  --color-border: #e2e5e1;
+  --color-river: #0f5c56;
+  --color-river-dark: #0a413c;
+  --color-river-tint: #e9f2f0;
 }
 
 :root {
@@ -27,43 +24,14 @@ html {
 body {
   margin: 0;
   background: var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-body);
+  color: var(--color-body);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-terracotta);
+  background: var(--color-river);
   color: var(--color-paper);
-}
-
-.font-display {
-  font-family: var(--font-display);
-}
-
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-/* contour-line texture used behind hero + section dividers */
-.bg-contours {
-  background-image: repeating-radial-gradient(
-    ellipse at 20% -10%,
-    transparent 0,
-    transparent 38px,
-    rgba(13, 27, 28, 0.055) 39px,
-    rgba(13, 27, 28, 0.055) 40px
-  );
-}
-
-.bg-contours-light {
-  background-image: repeating-radial-gradient(
-    ellipse at 80% 120%,
-    transparent 0,
-    transparent 42px,
-    rgba(13, 27, 28, 0.05) 43px,
-    rgba(13, 27, 28, 0.05) 44px
-  );
 }
 
 @media (prefers-reduced-motion: reduce) {

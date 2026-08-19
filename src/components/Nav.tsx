@@ -1,61 +1,63 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { Menu, X } from 'lucide-react'
+import logo from '../assets/wit-logo.png'
 
 const LINKS = [
-  { href: '#domains', label: 'Research' },
-  { href: '#sensors', label: 'Sensor Network' },
+  { href: '#research', label: 'Research' },
+  { href: '#technology', label: 'Technology' },
   { href: '#impact', label: 'Impact' },
   { href: '#projects', label: 'Projects' },
   { href: '#training', label: 'Training' },
   { href: '#people', label: 'People' },
+  { href: '#contact', label: 'Contact' },
 ]
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  const [open, setOpen] = useState(false)
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled
-          ? 'bg-paper/90 backdrop-blur border-b border-ink/10'
-          : 'bg-transparent border-b border-transparent'
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a
-          href="#top"
-          className={`font-display text-lg tracking-tight transition-colors ${scrolled ? 'text-ink' : 'text-paper'}`}
-        >
-          WIT <span className="text-glacier">Lab</span>
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-paper">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+        <a href="#top" className="shrink-0">
+          <img src={logo} alt="WIT — Centre for Water Informatics & Technology, LUMS" className="h-8 w-auto sm:h-9" />
         </a>
-        <nav
-          className={`hidden gap-7 font-mono text-[13px] uppercase tracking-wide transition-colors md:flex ${
-            scrolled ? 'text-ink/70' : 'text-paper/80'
-          }`}
-        >
+
+        <nav className="hidden items-center gap-6 text-[14px] text-body lg:flex">
           {LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="transition-colors hover:text-glacier">
+            <a key={link.href} href={link.href} className="transition-colors hover:text-river">
               {link.label}
             </a>
           ))}
         </nav>
-        <a
-          href="#contact"
-          className={`rounded-full border px-4 py-1.5 font-mono text-[13px] uppercase tracking-wide transition-colors ${
-            scrolled
-              ? 'border-ink/20 text-ink hover:border-river hover:text-river'
-              : 'border-paper/30 text-paper hover:border-glacier hover:text-glacier'
-          }`}
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          className="text-ink lg:hidden"
         >
-          Partner with us
-        </a>
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
+
+      {open && (
+        <nav className="border-t border-border bg-paper px-5 py-4 lg:hidden">
+          <ul className="flex flex-col gap-1">
+            {LINKS.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded px-2 py-2.5 text-[15px] text-body hover:bg-surface hover:text-river"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </header>
   )
 }

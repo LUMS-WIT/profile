@@ -2,7 +2,7 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
 import ResearchDomains from './components/ResearchDomains'
-import SensorNetwork from './components/SensorNetwork'
+import TechnologyPortfolio from './components/TechnologyPortfolio'
 import ImpactStories from './components/ImpactStories'
 import Projects from './components/Projects'
 import Trainings from './components/Trainings'
@@ -16,7 +16,7 @@ function App() {
       <Hero />
       <About />
       <ResearchDomains />
-      <SensorNetwork />
+      <TechnologyPortfolio />
       <ImpactStories />
       <Projects />
       <Trainings />
