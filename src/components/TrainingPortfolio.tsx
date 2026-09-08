@@ -68,10 +68,6 @@ function ProgrammeCard({ p }: { p: TrainingProgramme }) {
                   <dt className="shrink-0 font-semibold text-ink sm:w-28">Intended for</dt>
                   <dd className="text-body">{p.audience}</dd>
                 </div>
-                <div className="sm:flex sm:gap-3">
-                  <dt className="shrink-0 font-semibold text-ink sm:w-28">Lead faculty</dt>
-                  <dd className="text-body">{p.leadFaculty.join(', ')}</dd>
-                </div>
               </dl>
 
               <h4 className="mt-6 text-[12px] font-semibold uppercase tracking-wide text-body/60">
