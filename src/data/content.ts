@@ -47,7 +47,7 @@ export const researchDomains: ResearchDomain[] = [
     summary:
       'Snow and glacier monitoring across the north, and glacial lake outburst flood (GLOF) early-warning systems for downstream communities.',
     overview: [
-      'WIT instruments snow and glacier systems in the north as the physical basis for downstream flood and water-supply risk — treating the cryosphere as the upstream end of a basin-wide system, not an isolated field site.',
+      'WIT instruments snow and glacier systems in the north as the physical basis for downstream flood and water-supply risk, treating the cryosphere as the upstream end of a basin-wide system, not an isolated field site.',
     ],
     whatWeDo: [
       'Off-grid, solar-powered early-warning networks for glacial lake outburst floods (GLOF)',
@@ -64,7 +64,7 @@ export const researchDomains: ResearchDomain[] = [
     summary:
       'Telemetry, remote sensing, and hydrological modelling built into forecasting and management tools for flood-prone basins.',
     overview: [
-      'Flood risk in Pakistan is a systems problem spanning canal operations, remote sensing, and basin hydrology — WIT builds the telemetry and models that connect those layers into usable forecasting and management tools.',
+      'Flood risk in Pakistan is a systems problem spanning canal operations, remote sensing, and basin hydrology. WIT builds the telemetry and models that connect those layers into usable forecasting and management tools.',
     ],
     whatWeDo: [
       'Canal-level water monitoring for irrigation departments',
@@ -79,16 +79,16 @@ export const researchDomains: ResearchDomain[] = [
     id: 'systems-modelling',
     label: 'Systems Modelling',
     summary:
-      'One integrated modelling platform where the nexus, energy, agriculture, and water sectors meet — the analytical engine behind WIT’s Integrated Climate Policy Analysis (ICPA) work.',
+      'One integrated modelling platform where the nexus, energy, agriculture, and water sectors meet, the analytical engine behind WIT’s Integrated Climate Policy Analysis (ICPA) work.',
     overview: [
-      'WIT works at the intersection of data, science, and policy to build tools that help shape a sustainable, climate-resilient future for Pakistan — an integrated modelling platform connecting energy, agriculture, water, land, and climate systems for medium- and long-term, evidence-based planning. This is the WIT work published as Integrated Climate Policy Analysis (ICPA).',
-      'It runs on open-source frameworks — energy-system models (MESSAGEix), agriculture and land-use models (FABLE), and hydrological and water-resource models — linked together. That lets the team trace how a technology choice, a growth target, or a policy shift in one sector plays out in the others, and find pathways that actually meet Pakistan’s climate goals.',
+      'WIT works at the intersection of data, science, and policy to build tools that help shape a sustainable, climate-resilient future for Pakistan, an integrated modelling platform connecting energy, agriculture, water, land, and climate systems for medium- and long-term, evidence-based planning. This is the WIT work published as Integrated Climate Policy Analysis (ICPA).',
+      'It runs on open-source frameworks: energy-system models (MESSAGEix), agriculture and land-use models (FABLE), and hydrological and water-resource models, linked together. That lets the team trace how a technology choice, a growth target, or a policy shift in one sector plays out in the others, and find pathways that actually meet Pakistan’s climate goals.',
     ],
     whatWeDo: [
-      'Nexus — Nationally Determined Contributions (NDC) analysis, fair-share emission assessments, and adaptation pathways spanning water, energy, and land together',
-      'Energy sector — MESSAGEix energy-system modelling, technology uptake analysis (solar expansion, electrification, hydrogen), decarbonization pathways',
-      'Agriculture sector — food and resource security projections under climate change, agriculture supply/demand modelling',
-      'Water sector — water supply/demand projections and adaptation pathways integrated with the energy and land models above',
+      'Nexus: Nationally Determined Contributions (NDC) analysis, fair-share emission assessments, and adaptation pathways spanning water, energy, and land together',
+      'Energy sector: MESSAGEix energy-system modelling, technology uptake analysis (solar expansion, electrification, hydrogen), decarbonization pathways',
+      'Agriculture sector: food and resource security projections under climate change, agriculture supply/demand modelling',
+      'Water sector: water supply/demand projections and adaptation pathways integrated with the energy and land models above',
     ],
     collaboration: [
       'International Institute for Applied Systems Analysis (IIASA, Austria)',
@@ -99,8 +99,8 @@ export const researchDomains: ResearchDomain[] = [
       'Punjab Irrigation Department',
     ],
     capacityBuilding: [
-      'Course: Climate Change Governance — Science, Data and Models',
-      'Nexus Summit — a dialogue platform on integrated energy, water, and food management, convening government, academia, and international organizations',
+      'Course: Climate Change Governance: Science, Data and Models',
+      'Nexus Summit: a dialogue platform on integrated energy, water, and food management, convening government, academia, and international organizations',
     ],
     projectIds: ['p11', 'p2'],
     full: true,
@@ -111,7 +111,7 @@ export const researchDomains: ResearchDomain[] = [
     summary:
       'Demand-based irrigation management and low-cost sensing aimed at Pakistan’s agricultural sector, which consumes roughly 93% of the country’s water.',
     overview: [
-      'Agriculture is the largest single lever on Pakistan’s water system — WIT builds low-cost sensing and decision tools sized for smallholder economics, aimed at closing the gap between water used and water actually needed.',
+      'Agriculture is the largest single lever on Pakistan’s water system. WIT builds low-cost sensing and decision tools sized for smallholder economics, aimed at closing the gap between water used and water actually needed.',
     ],
     whatWeDo: [
       'Alternate wetting-and-drying irrigation control for paddy fields',
@@ -129,7 +129,7 @@ export const researchDomains: ResearchDomain[] = [
     summary:
       'Field-deployable sensor networks and communication infrastructure for environmental monitoring in remote, often ungauged, regions.',
     overview: [
-      'The instrumentation layer underneath every other theme here — WIT designs the sensor networks and telemetry that make systems-level analysis possible in places with no existing monitoring infrastructure.',
+      'The instrumentation layer underneath every other theme here. WIT designs the sensor networks and telemetry that make systems-level analysis possible in places with no existing monitoring infrastructure.',
     ],
     whatWeDo: [
       'Low-cost floating sensor networks for lakes and large water bodies',
@@ -146,7 +146,7 @@ export const researchDomains: ResearchDomain[] = [
     summary:
       'Water quality sensing and the social-institutional dimensions of water conflict, allocation, and governance.',
     overview: [
-      'Water systems are as much social and institutional as they are physical — this theme pairs direct water-quality sensing with research on water conflict, allocation, and governance across shared basins and lake systems.',
+      'Water systems are as much social and institutional as they are physical. This theme pairs direct water-quality sensing with research on water conflict, allocation, and governance across shared basins and lake systems.',
     ],
     whatWeDo: [
       'Floating water-quality sensor suites for lakes and ponds',
@@ -180,7 +180,7 @@ export const techProducts: TechProduct[] = [
     description: 'Collects environmental and meteorological data from field sites.',
     project: 'Context-Aware IoT for Long-Term Environmental Monitoring in Remote Regions of Pakistan',
     funder: 'LUMS Faculty Initiative Fund',
-    years: '2025–26',
+    years: '2025-26',
   },
   {
     id: 'watersense',
@@ -196,7 +196,7 @@ export const techProducts: TechProduct[] = [
     description: 'Monitors water levels in irrigation canals for data-driven resource management.',
     project: 'Monitoring Distributary Canal Operations in Water Deficit Environments',
     funder: 'Punjab Irrigation Department',
-    years: '2025–26',
+    years: '2025-26',
   },
   {
     id: 'forest-app',
@@ -204,7 +204,7 @@ export const techProducts: TechProduct[] = [
     description: 'Tracks forest health conditions from field observations.',
     project: 'Deployment of Forest Health Calculator',
     funder: 'WWF-Pakistan',
-    years: '2020–21',
+    years: '2020-21',
   },
   {
     id: 'awd-tube',
@@ -212,7 +212,7 @@ export const techProducts: TechProduct[] = [
     description: 'Optimises alternate wetting-and-drying irrigation in rice paddy cultivation.',
     project: 'Water-Energy-Food Nexus: Active Demand Management of Surface Water',
     funder: 'LUMS Faculty Initiative Fund',
-    years: '2019–20',
+    years: '2019-20',
   },
   {
     id: 'ai-camera',
@@ -249,15 +249,15 @@ export const impactStories: ImpactStory[] = [
     title: 'IntelliWarn Grid: an early-warning mesh for glacial flood risk',
     domain: 'Cryosphere',
     summary:
-      'A resilient AREDN and IoT mesh network built for GLOF (glacial lake outburst flood) disaster resilience in Chitral — designed to keep working when conventional connectivity fails.',
-    meta: 'ARDC · 2026–27',
+      'A resilient AREDN and IoT mesh network built for GLOF (glacial lake outburst flood) disaster resilience in Chitral, designed to keep working when conventional connectivity fails.',
+    meta: 'ARDC · 2026-27',
   },
   {
     id: 'snow-packed-north',
     title: 'Snow-Packed North',
     domain: 'Cryosphere',
     summary:
-      'Investigating the snowpack that feeds an entire country — the observational groundwork behind Pakistan’s glacier and snowmelt hydrology research.',
+      'Investigating the snowpack that feeds an entire country, the observational groundwork behind Pakistan’s glacier and snowmelt hydrology research.',
     meta: 'Research story',
   },
   {
@@ -265,7 +265,7 @@ export const impactStories: ImpactStory[] = [
     title: 'Smarter Farming, Lower Cost',
     domain: 'Sustainable Agriculture',
     summary:
-      'Reimagining precision agriculture for Pakistan — low-cost sensing and decision support built for smallholder economics, not export-farm budgets.',
+      'Reimagining precision agriculture for Pakistan: low-cost sensing and decision support built for smallholder economics, not export-farm budgets.',
     meta: 'Research story',
   },
   {
@@ -273,7 +273,7 @@ export const impactStories: ImpactStory[] = [
     title: 'An early-warning system for forest fires',
     domain: 'Forest Fire',
     summary:
-      'IoT and AI combined for early detection and response to forest fires — lessons from building a forest fire detection early-warning system in the field.',
+      'IoT and AI combined for early detection and response to forest fires: lessons from building a forest fire detection early-warning system in the field.',
     meta: 'Research story',
   },
 ]
@@ -296,7 +296,7 @@ export const projects: Project[] = [
     name: 'IntelliWarn Grid: Resilient AREDN & IoT Mesh for GLOF Disaster Resilience in Chitral',
     pi: 'Dr. Abubakr Muhammad',
     funder: 'Amateur Radio Digital Communications (ARDC)',
-    years: '2026–27',
+    years: '2026-27',
     status: 'Ongoing',
   },
   {
@@ -304,7 +304,7 @@ export const projects: Project[] = [
     name: 'RECONNECT',
     pi: 'Dr. Talha Manzoor',
     funder: 'Directorate-General for Climate Action (DG CLIMA)',
-    years: '2026–27',
+    years: '2026-27',
     status: 'Ongoing',
   },
   {
@@ -312,7 +312,7 @@ export const projects: Project[] = [
     name: 'Innovations for Resilient Smallholder Production Systems in Punjab, Pakistan',
     pi: 'Dr. Abubakr Muhammad',
     funder: "Germany's Federal Ministry of Agriculture, Food and Regional Identity (BMLEH)",
-    years: '2025–28',
+    years: '2025-28',
     status: 'Ongoing',
   },
   {
@@ -320,7 +320,7 @@ export const projects: Project[] = [
     name: 'Water Justice in Muslim Societies: A Scoping Study of Three River Basins',
     pi: 'Dr. Adeel Malik',
     funder: 'Independent Social Research Foundation (ISRF)',
-    years: '2025–26',
+    years: '2025-26',
     status: 'Ongoing',
   },
   {
@@ -328,7 +328,7 @@ export const projects: Project[] = [
     name: 'Monitoring Distributary Canal Operations in Water Deficit Environments',
     pi: 'Dr. Hassan Jaleel',
     funder: 'Punjab Irrigation Department',
-    years: '2025–26',
+    years: '2025-26',
     status: 'Ongoing',
   },
   {
@@ -336,7 +336,7 @@ export const projects: Project[] = [
     name: 'Low-Cost Floating Sensor Network for Monitoring Large Aquatic Environments',
     pi: 'Dr. Talha Manzoor',
     funder: 'Khalid and Mussarrat Aziz Research Grants for Planet Earth, LUMS',
-    years: '2025–27',
+    years: '2025-27',
     status: 'Ongoing',
   },
   {
@@ -360,7 +360,7 @@ export const projects: Project[] = [
     name: 'Context-Aware IoT for Long-Term Environmental Monitoring in Remote Regions of Pakistan',
     pi: 'Dr. Talha Manzoor',
     funder: 'LUMS Faculty Initiative Fund',
-    years: '2025–26',
+    years: '2025-26',
     status: 'Ongoing',
   },
   {
@@ -368,7 +368,7 @@ export const projects: Project[] = [
     name: 'A Robotic Solution for Digital Plant Phenotyping and Smart Farm Management',
     pi: 'Dr. Hassan Jaleel',
     funder: 'Higher Education Commission (HEC)',
-    years: '2023–26',
+    years: '2023-26',
     status: 'Ongoing',
   },
   {
@@ -376,7 +376,7 @@ export const projects: Project[] = [
     name: 'COMMITTED: Climate Policy Assessment and Mitigation Modeling',
     pi: 'Dr. Abubakr Muhammad',
     funder: "European Commission's Directorate on Climate (DG CLIMA)",
-    years: '2023–26',
+    years: '2023-26',
     status: 'Ongoing',
   },
   {
@@ -384,7 +384,7 @@ export const projects: Project[] = [
     name: 'Preventing Water-related Conflicts in Small Lake Systems',
     pi: 'Dr. Talha Manzoor',
     funder: 'United States Institute for Peace (USIP)',
-    years: '2024–25',
+    years: '2024-25',
     status: 'Completed',
   },
   {
@@ -392,7 +392,7 @@ export const projects: Project[] = [
     name: 'An Intelligent Tunnel Farm Management System',
     pi: 'Dr. Hassan Jaleel',
     funder: 'LUMS Faculty Initiative Fund',
-    years: '2023–24',
+    years: '2023-24',
     status: 'Completed',
   },
   {
@@ -400,7 +400,7 @@ export const projects: Project[] = [
     name: 'Securing Data-Driven Resilience for Ungauged Namal Valley Watershed',
     pi: 'Dr. Talha Manzoor',
     funder: 'German Academic Exchange Program (DAAD)',
-    years: '2022–24',
+    years: '2022-24',
     status: 'Completed',
   },
   {
@@ -408,7 +408,7 @@ export const projects: Project[] = [
     name: 'Off-grid Early Warning System for GLOF Risk Reduction, Gilgit-Baltistan',
     pi: 'Dr. Abubakr Muhammad',
     funder: 'APNIC Foundation',
-    years: '2023–24',
+    years: '2023-24',
     status: 'Completed',
   },
   {
@@ -416,7 +416,7 @@ export const projects: Project[] = [
     name: 'Improving Canal Irrigation Management Through Remote Sensing',
     pi: 'Dr. Abubakr Muhammad',
     funder: 'Asian Development Bank',
-    years: '2021–23',
+    years: '2021-23',
     status: 'Completed',
   },
   {
@@ -424,7 +424,7 @@ export const projects: Project[] = [
     name: 'Development of Agricultural Robotics Lab',
     pi: 'Dr. Abubakr Muhammad',
     funder: 'Higher Education Commission (HEC)',
-    years: '2019–22',
+    years: '2019-22',
     status: 'Completed',
   },
   {
@@ -440,7 +440,7 @@ export const projects: Project[] = [
     name: 'Autonomous Mobile Sensors for Hyper Resolution Hydrology',
     pi: 'Dr. Abubakr Muhammad',
     funder: 'DAAD · University of Kaiserslautern',
-    years: '2021–22',
+    years: '2021-22',
     status: 'Completed',
   },
   {
@@ -448,7 +448,7 @@ export const projects: Project[] = [
     name: 'Deployment of Forest Health Calculator',
     pi: 'Dr. Mian Muhammad Awais · Dr. Abubakr Muhammad',
     funder: 'WWF-Pakistan',
-    years: '2020–21',
+    years: '2020-21',
     status: 'Completed',
   },
   {
@@ -532,7 +532,7 @@ export type Course = {
 export const courses: Course[] = [
   { code: 'SCI103', title: 'Introduction to Environmental Science', term: 'Fall 2020' },
   { code: 'SCI302 / EE5612', title: 'Socio-ecological Systems and Sustainability', term: 'Spring 2021' },
-  { code: 'EE100', title: 'Engineering Laboratory — Intelligent Sustainable Systems', term: 'Spring 2021' },
+  { code: 'EE100', title: 'Engineering Laboratory: Intelligent Sustainable Systems', term: 'Spring 2021' },
   { code: 'EE568', title: 'Remote Sensing of the Environment', term: 'Spring 2023' },
   { code: 'ENV244', title: 'Modelling the Environment', term: 'Spring 2024' },
   { code: 'EE200', title: 'Sophomore Design Studio', term: 'Spring 2024' },
@@ -549,6 +549,10 @@ export type CourseDetail = {
   code: string
   title: string
   term: string
+  /** Track this course is listed under in the training catalogue. */
+  track: 'executive' | 'professional' | 'technical'
+  tagline: string
+  tags: string[]
   cadence: string
   overview: string
   modules: {
@@ -572,13 +576,17 @@ export const courseDetails: Record<string, CourseDetail> = {
     code: 'ENGG 562 / ENV 462',
     title: 'Climate Change Governance: Science, Data & Models',
     term: 'Fall 2025',
+    track: 'technical',
+    tagline:
+      'A for-credit LUMS course on the science, international policy and integrated-assessment modelling of climate change.',
+    tags: ['Climate policy', 'Modelling', 'Energy'],
     cadence: '14 weeks · 4 modules · two 75-minute lectures per week · team capstone project',
     overview:
-      'A course on the science, policy and modelling of climate change, taught jointly as the graduate ENGG 562 and the undergraduate ENV 462. It moves from the physical basis of the greenhouse effect through the international policy architecture and scenario-based integrated assessment to the energy–water–agriculture nexus, and closes with a team capstone that applies the course’s modelling tools to a real nexus problem in the Indus Basin context.',
+      'A course on the science, policy and modelling of climate change, taught jointly as the graduate ENGG 562 and the undergraduate ENV 462. It moves from the physical basis of the greenhouse effect through the international policy architecture and scenario-based integrated assessment to the energy, water and agriculture nexus, and closes with a team capstone that applies the course’s modelling tools to a real nexus problem in the Indus Basin context.',
     modules: [
       {
         name: 'Climate Science Foundations',
-        weeks: 'Weeks 1–3',
+        weeks: 'Weeks 1 to 3',
         summary:
           'The physical basis of the greenhouse effect and the history of its discovery and confirmation, from Fourier’s 1824 hypothesis through Hansen’s 1988 congressional testimony to CMIP7.',
         objectives: [
@@ -590,7 +598,7 @@ export const courseDetails: Record<string, CourseDetail> = {
       },
       {
         name: 'Policy Landscape',
-        weeks: 'Weeks 4–5',
+        weeks: 'Weeks 4 to 5',
         summary:
           'The institutional and political processes through which climate policy is formulated and implemented at the international and national levels.',
         objectives: [
@@ -603,7 +611,7 @@ export const courseDetails: Record<string, CourseDetail> = {
       },
       {
         name: 'Scenarios & Integrated Assessment',
-        weeks: 'Weeks 6–8',
+        weeks: 'Weeks 6 to 8',
         summary:
           'The scenario-based tools researchers and governments use to evaluate policy before implementation, and their methodological limitations.',
         objectives: [
@@ -612,11 +620,11 @@ export const courseDetails: Record<string, CourseDetail> = {
           'Connect carbon-pricing and fiscal mechanisms to national policy case studies.',
         ],
         guiding:
-          'A model’s output is only as reliable as its assumptions — which assumptions warrant the greatest scrutiny?',
+          'A model’s output is only as reliable as its assumptions. Which of them warrant the greatest scrutiny?',
       },
       {
-        name: 'Energy–Water–Agriculture Nexus',
-        weeks: 'Weeks 9–13',
+        name: 'Energy, Water and Agriculture Nexus',
+        weeks: 'Weeks 9 to 13',
         summary:
           'The energy, water and agriculture sectors examined individually, then coupled to expose the trade-offs that arise when a transition in one sector propagates through the others.',
         objectives: [
@@ -636,7 +644,7 @@ export const courseDetails: Record<string, CourseDetail> = {
       },
       {
         id: 'CLO2',
-        text: 'Critically assess climate policy and reporting frameworks — NDCs, carbon pricing, mitigation and adaptation.',
+        text: 'Critically assess climate policy and reporting frameworks such as NDCs, carbon pricing, and mitigation and adaptation planning.',
       },
       {
         id: 'CLO3',
@@ -658,7 +666,7 @@ export const courseDetails: Record<string, CourseDetail> = {
       },
     ],
     project:
-      'Teams of three to four, formed by Week 4, investigate a falsifiable question in energy, water, agriculture or the interactions among them. The method follows from the question — integrated assessment models such as MESSAGEix or GCAM, land-use tools such as FABLE, decision-science frameworks such as Robust Decision Making, or systems mapping and comparative policy analysis. The project runs through proposal, progress and policy-brief milestones to a Week 14 capstone presentation and an individual defence. A subset of projects each year is selected for publication as short public briefs.',
+      'Teams of three to four, formed by Week 4, investigate a falsifiable question in energy, water, agriculture or the interactions among them. The method follows from the question: integrated assessment models such as MESSAGEix or GCAM, land-use tools such as FABLE, decision-science frameworks such as Robust Decision Making, or systems mapping and comparative policy analysis. The project runs through proposal, progress and policy-brief milestones to a Week 14 capstone presentation and an individual defence. A subset of projects each year is selected for publication as short public briefs.',
   },
 }
 
@@ -734,7 +742,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     leadFaculty: ['Dr. Abubakr Muhammad', 'Dr. Talha Manzoor', 'Dr. Muhammad Awais'],
     tags: ['Systems thinking', 'Nexus', 'Leadership'],
     overview:
-      "Resource decisions in Pakistan are still taken one sector at a time — an agricultural support price set without asking what it does to the water table, an industrial zone approved without accounting for its peak power draw or its place in a national emissions commitment. The system pushes back, and the intervention ends up producing the problem it was meant to solve. This programme is for leaders who must manage that complexity without being drawn into the technical detail. It replaces linear cause-and-effect reasoning with a working understanding of feedback, delay and leverage, applied throughout to the water-energy-food-climate questions senior officials in Pakistan face.",
+      "Resource decisions in Pakistan are still taken one sector at a time. An agricultural support price is set without asking what it does to the water table; an industrial zone is approved without accounting for its peak power draw or its place in a national emissions commitment. The system pushes back, and the intervention ends up producing the problem it was meant to solve. This programme is for leaders who must manage that complexity without being drawn into the technical detail. It replaces linear cause-and-effect reasoning with a working understanding of feedback, delay and leverage, applied throughout to the water, energy, food and climate questions senior officials in Pakistan face.",
     objectives: [
       'Recognise why certain problems persist despite repeated intervention and diagnose the structures that keep them in place.',
       'Map the links between water availability, energy security, food production and climate commitments in each decision.',
@@ -852,7 +860,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     leadFaculty: ['Dr. Talha Manzoor', 'Dr. Muhammad Awais'],
     tags: ['Communication', 'Data science'],
     overview:
-      'In most organisations, good data fails to become good decisions. The problem is rarely a shortage of information — it is the gap between analysis and synthesis, between a hundred pages of findings and the one page a decision-maker has time to read. Mid-career staff carry that gap: they are asked to turn complex technical work into concise, defensible recommendations for people who have little patience for jargon. This programme concentrates on that last mile, moving beyond spreadsheets and slide templates to the craft of distilling analysis into narratives, reports and policy briefs that change what an institution does.',
+      'In most organisations, good data fails to become good decisions. The problem is rarely a shortage of information. It is the gap between analysis and synthesis, between a hundred pages of findings and the one page a decision-maker has time to read. Mid-career staff carry that gap: they are asked to turn complex technical work into concise, defensible recommendations for readers who have little patience for jargon. This programme concentrates on that last mile, moving beyond spreadsheets and slide templates to the craft of distilling analysis into narratives, reports and policy briefs that change what an institution does.',
     objectives: [
       'Reduce a large technical report to a one-page executive summary without losing what matters.',
       'Choose visualisations that expose trends, anomalies and leverage points rather than simply displaying data.',
@@ -1309,9 +1317,9 @@ export const trainingProgrammes: TrainingProgramme[] = [
 ]
 
 export const trainingPortfolio = {
-  period: '2026–2027',
+  period: '2026-2027',
   intro:
-    'The Professional Training Portfolio consolidates a decade of WIT capacity building — summer and fall schools, short courses for public agencies, and stakeholder workshops on the Indus Basin, the energy–water–agriculture nexus and climate policy — into a set of programmes that institutions can commission directly, individually or in combination. Every programme is delivered by LUMS faculty and WIT research staff active in the subject they teach, using the models, data and case studies applied in the Centre’s own research and advisory work.',
+    'The Professional Training Portfolio draws on a decade of WIT capacity building: summer and fall schools, short courses for public agencies, and stakeholder workshops on the Indus Basin, the energy and agriculture nexus and climate policy. It sets out programmes that institutions can commission directly, individually or in combination. Every programme is delivered by LUMS faculty and WIT research staff active in the subject they teach, using the models, data and case studies applied in the Centre’s own research and advisory work.',
   terms: [
     {
       heading: 'Delivery',
@@ -1332,7 +1340,7 @@ export const trainingPortfolio = {
   ],
   additionalTopics: [
     'Water accounting',
-    'Water, technology and society interactions — systems thinking for basin-scale development',
+    'Water, technology and society interactions (systems thinking for basin-scale development)',
     'Digital sustainable agriculture',
     'Water quality modelling',
     'Environmental flow assessment',
@@ -1367,7 +1375,7 @@ export const peopleTotal = 40
 export const contact = {
   email: 'wit@lums.edu.pk',
   phone: '+92 42 3560 8000, Ext. 3763',
-  hours: 'Mon–Fri, 8:30 a.m. to 5:00 p.m.',
+  hours: 'Mon to Fri, 8:30 a.m. to 5:00 p.m.',
   address: 'LUMS, DHA, Lahore, Pakistan',
 }
 
@@ -1458,7 +1466,7 @@ export const systemPressures: SystemPressure[] = [
     sector: 'water',
     label: 'Water',
     value: '~1,000 m³',
-    note: 'per person per year — the internationally recognized water-scarcity threshold, and roughly where Pakistan now sits, down from a comfortable surplus at independence. The receded shoreline at Tarbela reservoir below is what that looks like in practice.',
+    note: 'per person per year. That is the internationally recognized water-scarcity threshold, and roughly where Pakistan now sits, down from a comfortable surplus at independence. The receded shoreline at Tarbela reservoir below is what that looks like in practice.',
     source: 'National water resource assessments',
     photoCredit: {
       author: 'Wajihamalick',
@@ -1469,7 +1477,7 @@ export const systemPressures: SystemPressure[] = [
     sector: 'agriculture',
     label: 'Agriculture',
     value: '93%',
-    note: 'of that scarce water goes to agriculture — yet Pakistan still has one of the lowest crop yields per unit of water in the world. The water isn’t missing; the system using it is inefficient.',
+    note: 'of that scarce water goes to agriculture, yet Pakistan still has one of the lowest crop yields per unit of water in the world. The water isn’t missing; the system using it is inefficient.',
     source: 'WIT, wit.lums.edu.pk',
     photoCredit: {
       author: 'Naveed Yousaf',
@@ -1480,7 +1488,7 @@ export const systemPressures: SystemPressure[] = [
     sector: 'energy',
     label: 'Energy',
     value: 'Hydro-dependent',
-    note: 'A large share of the grid runs on hydropower, so when rivers run low in dry years, power generation drops too — a water problem becomes an energy problem within the same season.',
+    note: 'A large share of the grid runs on hydropower, so when rivers run low in dry years, power generation drops too. A water problem becomes an energy problem within the same season.',
     source: 'Structural link, not a single-year figure',
     photoCredit: {
       author: 'Hiàn (alt)',
@@ -1491,7 +1499,7 @@ export const systemPressures: SystemPressure[] = [
     sector: 'climate',
     label: 'Climate',
     value: '5th',
-    note: 'most climate-affected country in the world (1999–2018) while producing under 1% of global emissions. The 2022 floods alone affected 33 million people and destroyed roughly half the crops in flooded districts — a climate event that was a water event and a food event at once.',
+    note: 'most climate-affected country in the world (1999 to 2018) while producing under 1% of global emissions. The 2022 floods alone affected 33 million people and destroyed roughly half the crops in flooded districts: a climate event that was a water event and a food event at once.',
     source: 'Global Climate Risk Index (Germanwatch); UN flood reporting',
     photoCredit: {
       author: 'Wikimedia Commons',
@@ -1502,7 +1510,7 @@ export const systemPressures: SystemPressure[] = [
     sector: 'population',
     label: 'Population',
     value: '251M+',
-    note: 'people today, projected to reach 263 million by 2050 — and roughly 22% already live below the national poverty line, with a Human Capital Index of just 0.41. Every pressure above scales with population, not against it.',
+    note: 'people today, projected to reach 263 million by 2050. Roughly 22% already live below the national poverty line, with a Human Capital Index of just 0.41. Every pressure above scales with population, not against it.',
     source: 'World Bank (2024); WIT, wit.lums.edu.pk',
   },
 ]

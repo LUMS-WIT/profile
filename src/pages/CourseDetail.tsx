@@ -56,8 +56,8 @@ export default function CourseDetail() {
                 ))}
               </ul>
 
-              <p className="mt-4 border-l-2 border-border pl-3 text-[13px] italic leading-relaxed text-body/80">
-                Guiding question — {m.guiding}
+              <p className="mt-4 border-l-2 border-border pl-3 text-[13px] leading-relaxed text-body/80">
+                <span className="font-medium text-ink">Guiding question.</span> {m.guiding}
               </p>
             </div>
           ))}
