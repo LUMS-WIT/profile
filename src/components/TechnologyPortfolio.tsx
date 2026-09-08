@@ -33,7 +33,7 @@ export default function TechnologyPortfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.4, delay: (i % 3) * 0.05 }}
-                className="overflow-hidden rounded-lg border border-border transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-8px_rgba(15,92,86,0.18)]"
+                className="overflow-hidden rounded-lg border border-border transition-colors hover:border-river"
               >
                 <div className="h-40 bg-river-tint lg:h-48">
                   {photo && <img src={photo} alt="" className="h-full w-full object-cover" />}

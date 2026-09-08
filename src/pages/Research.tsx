@@ -37,7 +37,7 @@ export default function Research() {
             >
               <Link
                 to={`/research/${domain.id}`}
-                className="group flex h-full flex-col justify-between rounded-lg border border-border p-7 transition-all hover:-translate-y-0.5 hover:border-river hover:shadow-[0_12px_28px_-8px_rgba(15,92,86,0.18)]"
+                className="group flex h-full flex-col justify-between rounded-lg border border-border p-7 transition-colors hover:border-river"
               >
                 <div>
                   <h2 className="text-lg font-semibold text-ink lg:text-xl">{domain.label}</h2>

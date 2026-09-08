@@ -32,7 +32,7 @@ export default function People() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.4, delay: (i % 3) * 0.06 }}
-                className="flex items-center gap-5 rounded-lg border border-border p-6 transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-8px_rgba(15,92,86,0.18)]"
+                className="flex items-center gap-5 rounded-lg border border-border p-6 transition-colors hover:border-river"
               >
                 <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-river-tint text-base font-semibold text-river">
                   {photo ? (

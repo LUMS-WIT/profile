@@ -91,7 +91,7 @@ export default function ResearchTheme() {
                 <ul className="mt-3 space-y-3.5">
                   {relatedProjects.map((p) => (
                     <li key={p.id} className="text-[14px] text-body lg:text-[15px]">
-                      <Link to="/projects" className="text-river hover:underline">
+                      <Link to="/impact#projects" className="text-river hover:underline">
                         {p.name}
                       </Link>
                       <span className="text-body/70"> · {p.funder}</span>

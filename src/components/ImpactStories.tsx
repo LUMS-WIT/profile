@@ -12,12 +12,16 @@ const FALLBACK: Record<string, () => string | undefined> = {
 
 export default function ImpactStories() {
   return (
-    <section className="bg-surface py-16 sm:py-24">
+    <section id="stories" className="scroll-mt-20 bg-paper py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <p className="text-[13px] font-medium tracking-wide text-river uppercase lg:text-sm">Impact</p>
         <h1 className="mt-2 max-w-2xl text-3xl font-semibold text-ink sm:text-4xl lg:text-5xl">
-          Research stories
+          Work in the field, and the projects behind it
         </h1>
+        <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-body lg:text-lg">
+          A few stories from WIT&rsquo;s field and modelling work, followed by the full register of
+          funded research projects that produced them.
+        </p>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
           {impactStories.map((story, i) => {
@@ -29,7 +33,7 @@ export default function ImpactStories() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.4, delay: (i % 2) * 0.06 }}
-                className="overflow-hidden rounded-lg border border-border bg-paper transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-8px_rgba(15,92,86,0.18)]"
+                className="overflow-hidden rounded-lg border border-border bg-paper transition-colors hover:border-river"
               >
                 <div className="h-52 bg-river-tint lg:h-60">
                   {photo && <img src={photo} alt="" className="h-full w-full object-cover" />}

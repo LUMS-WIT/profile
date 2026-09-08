@@ -61,10 +61,10 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mt-5 max-w-xl text-lg text-white/85 lg:max-w-2xl lg:text-xl"
           >
-            A hub for hydro-informatics and systems analysis at LUMS —
-            studying water, energy, agriculture, and climate as one
+            A hub for hydro-informatics and systems analysis at LUMS,
+            studying water, energy, agriculture and climate as one
             connected system, and building the field instrumentation,
-            models, and training that make that analysis possible.
+            models and training that make that analysis possible.
           </motion.p>
           <motion.div
             initial={{ opacity: 0 }}
@@ -79,10 +79,10 @@ export default function Hero() {
               Explore research
             </Link>
             <Link
-              to="/projects"
+              to="/impact"
               className="rounded border border-white/50 px-6 py-3 text-[14px] font-medium text-white transition-colors hover:border-white lg:px-7 lg:py-3.5 lg:text-[15px]"
             >
-              Project portfolio
+              See the impact
             </Link>
           </motion.div>
         </div>

@@ -7,7 +7,7 @@ import { researchDomains, techProducts, impactStories, newsItems } from '../data
 import { techPhoto, storyPhoto, heroPhoto } from '../lib/photos'
 
 const cardHover =
-  'transition-all hover:-translate-y-0.5 hover:border-river hover:shadow-[0_12px_28px_-8px_rgba(15,92,86,0.18)]'
+  'transition-colors hover:border-river'
 
 export default function Home() {
   return (
@@ -70,7 +70,7 @@ export default function Home() {
         </div>
       </TeaserSection>
 
-      <TeaserSection eyebrow="News & Events" title="Recent activity" viewAllHref="/news" viewAllLabel="All news & events">
+      <TeaserSection eyebrow="News" title="Recent activity" viewAllHref="/news" viewAllLabel="All news">
         <ul className="divide-y divide-border rounded-lg border border-border">
           {newsItems.slice(0, 5).map((item) => (
             <li key={item.id} className="flex flex-wrap items-baseline gap-x-6 gap-y-1 px-6 py-5 transition-colors hover:bg-surface">

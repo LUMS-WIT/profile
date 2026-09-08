@@ -8,10 +8,9 @@ const LINKS = [
   { to: '/research', label: 'Research' },
   { to: '/technology', label: 'Technology' },
   { to: '/impact', label: 'Impact' },
-  { to: '/projects', label: 'Projects' },
   { to: '/training', label: 'Training' },
   { to: '/people', label: 'People' },
-  { to: '/news', label: 'News & Events' },
+  { to: '/news', label: 'News' },
 ]
 
 export default function Nav() {
