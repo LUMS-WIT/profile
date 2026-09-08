@@ -19,14 +19,21 @@ export default function CourseDetail() {
     >
       <div className="mx-auto max-w-5xl px-6 lg:px-8">
         <Link
-          to="/training#courses"
+          to={`/training#${course.track}`}
           className="flex items-center gap-1.5 text-[13px] font-medium text-river hover:underline lg:text-sm"
         >
-          <ArrowLeft size={14} /> All training &amp; teaching
+          <ArrowLeft size={14} /> Back to the programme catalogue
         </Link>
 
-        <p className="mt-6 font-mono text-[13px] text-river">{course.code}</p>
-        <h1 className="mt-1.5 text-3xl font-semibold text-ink sm:text-4xl lg:text-5xl">{course.title}</h1>
+        <div className="mt-6 flex items-center gap-3">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded bg-river-tint font-mono text-[12px] font-semibold text-river">
+            {course.code}
+          </span>
+          <span className="font-mono text-[13px] text-body/70">
+            For-credit LUMS course · {course.refCode}
+          </span>
+        </div>
+        <h1 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl lg:text-5xl">{course.title}</h1>
         <p className="mt-4 max-w-2xl text-lg text-body lg:text-xl">{course.overview}</p>
         <p className="mt-4 text-[13px] font-medium text-body/70 lg:text-sm">{course.cadence}</p>
 

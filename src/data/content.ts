@@ -544,15 +544,29 @@ export const courses: Course[] = [
   },
 ]
 
+// Four broad topic clusters used by the catalogue filter, in place of
+// granular per-programme tags.
+export type TrainingCategory = 'water' | 'climate' | 'ai' | 'leadership'
+
+export const trainingCategories: { id: TrainingCategory; label: string }[] = [
+  { id: 'water', label: 'Water & floods' },
+  { id: 'climate', label: 'Climate & energy' },
+  { id: 'ai', label: 'AI & data' },
+  { id: 'leadership', label: 'Leadership & communication' },
+]
+
 export type CourseDetail = {
   slug: string
+  /** Catalogue code, e.g. 'T9' — numbered in sequence with the programmes. */
   code: string
+  /** University course number(s), e.g. 'ENGG 562 / ENV 462'. */
+  refCode: string
   title: string
   term: string
   /** Track this course is listed under in the training catalogue. */
   track: 'executive' | 'professional' | 'technical'
   tagline: string
-  tags: string[]
+  category: TrainingCategory
   cadence: string
   overview: string
   modules: {
@@ -573,13 +587,14 @@ export type CourseDetail = {
 export const courseDetails: Record<string, CourseDetail> = {
   'climate-governance': {
     slug: 'climate-governance',
-    code: 'ENGG 562 / ENV 462',
+    code: 'T9',
+    refCode: 'ENGG 562 / ENV 462',
     title: 'Climate Change Governance: Science, Data & Models',
     term: 'Fall 2025',
     track: 'technical',
     tagline:
       'A for-credit LUMS course on the science, international policy and integrated-assessment modelling of climate change.',
-    tags: ['Climate policy', 'Modelling', 'Energy'],
+    category: 'climate',
     cadence: '14 weeks · 4 modules · two 75-minute lectures per week · team capstone project',
     overview:
       'A course on the science, policy and modelling of climate change, taught jointly as the graduate ENGG 562 and the undergraduate ENV 462. It moves from the physical basis of the greenhouse effect through the international policy architecture and scenario-based integrated assessment to the energy, water and agriculture nexus, and closes with a team capstone that applies the course’s modelling tools to a real nexus problem in the Indus Basin context.',
@@ -721,8 +736,8 @@ export type TrainingProgramme = {
   format: string
   audience: string
   leadFaculty: string[]
-  /** Topic tags for filtering — drawn from a shared vocabulary. */
-  tags: string[]
+  /** Broad topic cluster used by the catalogue filter. */
+  category: TrainingCategory
   overview: string
   objectives: string[]
   outline: { label: string; focus: string; content: string }[]
@@ -740,7 +755,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     audience:
       'Secretaries, directors-general, chief executives, board members, senior planners and development-sector leadership',
     leadFaculty: ['Dr. Abubakr Muhammad', 'Dr. Talha Manzoor', 'Dr. Muhammad Awais'],
-    tags: ['Systems thinking', 'Nexus', 'Leadership'],
+    category: 'leadership',
     overview:
       "Resource decisions in Pakistan are still taken one sector at a time. An agricultural support price is set without asking what it does to the water table; an industrial zone is approved without accounting for its peak power draw or its place in a national emissions commitment. The system pushes back, and the intervention ends up producing the problem it was meant to solve. This programme is for leaders who must manage that complexity without being drawn into the technical detail. It replaces linear cause-and-effect reasoning with a working understanding of feedback, delay and leverage, applied throughout to the water, energy, food and climate questions senior officials in Pakistan face.",
     objectives: [
@@ -780,7 +795,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     audience:
       'Federal and provincial policymakers, climate change and planning officials, utility and regulator leadership, development finance staff',
     leadFaculty: ['Dr. Muhammad Awais', 'Dr. Talha Manzoor'],
-    tags: ['Climate policy', 'Modelling', 'Leadership'],
+    category: 'climate',
     overview:
       "Pakistan's Nationally Determined Contribution, its long-term low-emissions strategy and a growing set of sectoral plans all rest on quantitative modelling. Most of the officials who own those commitments have never seen the inside of the models that produced them, and are poorly placed to judge which numbers are firm and which are assumptions in disguise. This programme opens the models up. Drawing on the faculty's work on national pathways for Pakistan and on global integrated assessment at IIASA, it shows how mitigation and adaptation scenarios are built, where their uncertainties come from, and how to read scenario outputs critically when they arrive on the desk.",
     objectives: [
@@ -819,7 +834,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     format: 'Briefings, guided hands-on sessions with AI tools and a governance workshop',
     audience: 'Heads of departments and agencies, senior engineers and planners, IT and data leads, programme directors',
     leadFaculty: ['Dr. Muhammad Awais', 'Ahmad Haseeb Rabbani'],
-    tags: ['AI', 'Governance', 'Leadership'],
+    category: 'ai',
     overview:
       'Large language models and the agentic systems built on them are already inside most water and climate organisations, whether or not leadership has decided they should be. Staff use them to draft reports, write code and summarise documents. Few institutions have a considered view on where these tools genuinely add value, where they introduce risk, and what it would take to use them well. This programme gives senior participants direct experience of the tools in the context of their own work, then steps back to the questions leadership has to answer on data governance, procurement, staff capability and accountability.',
     objectives: [
@@ -858,7 +873,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     format: "Workshop with writing and presentation exercises on participants' own material",
     audience: 'Mid-career professionals, researchers, policy analysts, technical leads and programme officers',
     leadFaculty: ['Dr. Talha Manzoor', 'Dr. Muhammad Awais'],
-    tags: ['Communication', 'Data science'],
+    category: 'leadership',
     overview:
       'In most organisations, good data fails to become good decisions. The problem is rarely a shortage of information. It is the gap between analysis and synthesis, between a hundred pages of findings and the one page a decision-maker has time to read. Mid-career staff carry that gap: they are asked to turn complex technical work into concise, defensible recommendations for readers who have little patience for jargon. This programme concentrates on that last mile, moving beyond spreadsheets and slide templates to the craft of distilling analysis into narratives, reports and policy briefs that change what an institution does.',
     objectives: [
@@ -897,7 +912,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     format: 'Workshop with drafting, review and presentation practice',
     audience: 'Research officers, scientists and engineers in public research bodies, universities and technical agencies',
     leadFaculty: ['Dr. Talha Manzoor', 'Dr. Muhammad Awais'],
-    tags: ['Scientific writing', 'Communication'],
+    category: 'leadership',
     overview:
       "Many technical organisations in Pakistan produce sound science that never reaches a peer-reviewed journal, and technical reports read only by the people who wrote them. The limiting factor is rarely the quality of the work; it is the writing, the figures and the ability to answer a reviewer or an audience. This programme is built around participants' own manuscripts and reports, working through structure, argument, figures, the review process and the spoken presentation of results, with faculty who publish regularly in the journals participants are targeting.",
     objectives: [
@@ -944,7 +959,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     audience:
       'Engineers, hydrologists, watershed specialists and technical leads in flood, irrigation and water resources agencies',
     leadFaculty: ['Dr. Talha Manzoor', 'WIT hydrology team'],
-    tags: ['GIS', 'Hydrology', 'Floods'],
+    category: 'water',
     overview:
       'Spatial data preparation, DEM conditioning and statistical flood frequency analysis underpin every reliable hydrological or hydraulic study. Errors made at this stage propagate silently into every model built on top of them. This module gives engineers a rigorous geospatial workflow in QGIS and a defensible approach to frequency analysis in HEC-SSP, so that design floods for a range of return periods can be produced, documented and justified with statistical confidence.',
     objectives: [
@@ -988,7 +1003,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     format: 'Hands-on laboratory, one workstation per participant',
     audience: 'Engineers, hydrologists and modellers in flood, irrigation, meteorological and water resources agencies',
     leadFaculty: ['Dr. Muhammad Awais', 'Dr. Talha Manzoor'],
-    tags: ['Hydrology', 'Modelling', 'Climate'],
+    category: 'water',
     overview:
       "Understanding how a watershed responds to extreme rainfall, and how that response will shift as the climate changes, requires modelling tools that span from a single sub-basin to an entire river system. This module covers lumped and semi-distributed modelling in HEC-HMS, semi-distributed catchment modelling in SWAT+, and grid-based macro-scale modelling with IIASA's Community Water Model (CWatM), which WIT applies in its own Indus Basin work. Downscaled climate projections are integrated throughout, so participants leave able to evaluate future hydrological extremes and basin water balances rather than only historical events.",
     objectives: [
@@ -1033,7 +1048,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     audience:
       'Engineers, hydrologists and technical leads responsible for river works, floodplain management and the review of third-party studies',
     leadFaculty: ['Dr. Talha Manzoor', 'WIT hydrology team'],
-    tags: ['Hydraulics', 'Floods', 'Modelling'],
+    category: 'water',
     overview:
       "Hydraulic modelling determines how a river behaves at a bridge, a barrage or an embankment, how a dam-break wave propagates and which land will be under water in a given flood. It is also the part of a consultant's study that agencies find hardest to check. This four-day module trains engineers in 1D and 2D unsteady modelling with HEC-RAS, from cross-section extraction to mesh generation, stability criteria and rain-on-grid inundation mapping. The final day is devoted to quality control: auditing an end-to-end model, applying appraisal criteria and reporting standards, and troubleshooting under time pressure.",
     objectives: [
@@ -1084,7 +1099,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     audience:
       'Analysts and modellers in climate change, planning, energy and environment ministries, research institutes and utilities',
     leadFaculty: ['Dr. Muhammad Awais', 'IIASA Energy, Climate and Environment Programme contributors'],
-    tags: ['Climate policy', 'Modelling', 'Energy'],
+    category: 'climate',
     overview:
       "National greenhouse gas mitigation planning increasingly relies on integrated assessment models that link energy supply, sectoral demand, land, water and climate impacts. Pakistan has few analysts who can build and operate such a model, and depends on external partners for pathways it is then expected to defend internationally. This module transfers that capability. Using the open-source MESSAGEix framework maintained at IIASA, participants build a national-level model from a reference energy system, prepare and calibrate input data, and design scenarios aligned with NDCs and long-term strategies. It draws directly on WIT's MESSAGEix-Pakistan work and on the faculty's role in the EU COMMITTED programme.",
     objectives: [
@@ -1140,7 +1155,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     format: 'Hands-on laboratory in Python, one workstation per participant',
     audience: 'Engineers, scientists and data analysts in water, meteorological, agricultural and environmental agencies',
     leadFaculty: ['Ahmad Haseeb Rabbani', 'Dr. Talha Manzoor'],
-    tags: ['Machine learning', 'Data science', 'Remote sensing'],
+    category: 'ai',
     overview:
       'Water agencies now hold more data than they can analyse: gauge records, sensor telemetry, satellite imagery and model outputs accumulate faster than conventional methods can use them. Machine learning offers a way through, but only for staff who understand what the methods assume and where they fail. This module teaches machine learning and data science as applied to water resources monitoring and earth systems observation, progressing from regression and classification through time-series forecasting with recurrent and LSTM networks to learning from satellite data, with consistent attention to validation, uncertainty and operational deployment. Content is calibrated to participants’ backgrounds before delivery.',
     objectives: [
@@ -1190,7 +1205,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     format: 'Hands-on laboratory with AI tools and agent frameworks, one workstation per participant',
     audience: 'Modellers, analysts, researchers and engineers who build or run hydrological, climate, energy or systems models',
     leadFaculty: ['Dr. Muhammad Awais', 'Ahmad Haseeb Rabbani'],
-    tags: ['AI', 'Modelling'],
+    category: 'ai',
     overview:
       'Large language models have changed how technical work gets done. A modeller can now draft a pre-processing script in minutes, ask a model to explain an unfamiliar configuration file, or set up an agent that fetches data, runs a simulation and drafts the results section. Used carelessly, the same tools produce plausible-looking code that is wrong and reports that cite things that do not exist. This module is a practitioner’s course, teaching participants to use language models and agentic workflows effectively for the specific tasks that arise in water, climate and systems modelling, with equal weight on getting useful output and on verifying it. Examples are drawn from HEC-HMS, HEC-RAS, CWatM and MESSAGEix work at WIT.',
     objectives: [
@@ -1234,7 +1249,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     format: 'Laboratory and field sessions, including deployment at a WIT field site',
     audience: 'Engineers, field officers and monitoring staff in irrigation, groundwater, hydrological and environmental agencies',
     leadFaculty: ['Dr. Talha Manzoor', 'Dr. Abubakr Muhammad', 'WIT field engineering team'],
-    tags: ['Sensors & IoT', 'Monitoring'],
+    category: 'water',
     overview:
       "Most of Pakistan's water system is unmeasured. Where measurement exists it is often manual, infrequent and unverifiable. Low-cost sensing and telemetry make continuous, quality-assured monitoring affordable, but only if the network is designed for the realities of the field: power, connectivity, siltation, tampering and maintenance. WIT operates more than a hundred field installations across Pakistan, including the hydrometeorological network of the Namal Valley and a soil-moisture network for the Indus Basin. This module draws on that experience to take participants from sensor selection through node design, telemetry, data quality assurance and dashboards, with a field deployment on the final day.",
     objectives: [
@@ -1279,7 +1294,7 @@ export const trainingProgrammes: TrainingProgramme[] = [
     audience:
       'Engineers, hydrologists, agricultural and disaster-management professionals and GIS staff in public agencies',
     leadFaculty: ['Dr. Abubakr Muhammad', 'WIT remote sensing team'],
-    tags: ['Remote sensing', 'GIS', 'Floods'],
+    category: 'water',
     overview:
       "Free satellite data from the Sentinel, Landsat and MODIS programmes now provides frequent, basin-wide observation of floods, crops, snow cover and surface water. Most agencies use a fraction of it, because the workflows for accessing, processing and interpreting the data are unfamiliar. This module gives participants a practical command of optical and radar remote sensing for water applications, using open tools and cloud processing. It draws on WIT's assessments of the 2022 floods, catchment snow-depth estimation in the Upper Indus and crop mapping in Punjab.",
     objectives: [

@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import {
   courseDetails,
+  trainingCategories,
   trainingPortfolio,
   trainingProgrammes,
   trainingTracks,
   type CourseDetail,
+  type TrainingCategory,
   type TrainingProgramme,
 } from '../data/content'
 
@@ -123,14 +125,17 @@ function CourseCard({ c }: { c: CourseDetail }) {
       to={`/training/${c.slug}`}
       className="flex items-start gap-4 rounded-lg border border-border bg-paper p-5 transition-colors hover:border-river"
     >
-      <span className="mt-0.5 inline-flex h-8 shrink-0 items-center rounded bg-surface px-2 font-mono text-[11px] font-semibold text-body/70">
-        Course
+      <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded bg-river-tint font-mono text-[12px] font-semibold text-river">
+        {c.code}
       </span>
       <span className="min-w-0 flex-1">
         <span className="block text-[15px] font-semibold text-ink">{c.title}</span>
         <span className="mt-1 block text-[13px] leading-snug text-body">{c.tagline}</span>
-        <span className="mt-2 flex items-center gap-1 text-[12px] font-medium text-river">
-          For-credit course, view outline <ArrowRight size={12} />
+        <span className="mt-2 flex items-center gap-1 text-[12px] text-body/60">
+          For-credit LUMS course ({c.refCode})
+        </span>
+        <span className="mt-1.5 flex items-center gap-1 text-[12px] font-medium text-river">
+          View outline <ArrowRight size={12} />
         </span>
       </span>
     </Link>
@@ -138,28 +143,20 @@ function CourseCard({ c }: { c: CourseDetail }) {
 }
 
 export default function TrainingPortfolio() {
-  const [tag, setTag] = useState<string | null>(null)
-
-  const allTags = useMemo(() => {
-    const t = [
-      ...trainingProgrammes.flatMap((p) => p.tags),
-      ...creditCourses.flatMap((c) => c.tags),
-    ]
-    return [...new Set(t)].sort((a, b) => a.localeCompare(b))
-  }, [])
+  const [cat, setCat] = useState<TrainingCategory | null>(null)
 
   const groups = useMemo(
     () =>
       trainingTracks.map((track) => ({
         track,
         programmes: trainingProgrammes.filter(
-          (p) => p.track === track.id && (tag === null || p.tags.includes(tag)),
+          (p) => p.track === track.id && (cat === null || p.category === cat),
         ),
         courses: creditCourses.filter(
-          (c) => c.track === track.id && (tag === null || c.tags.includes(tag)),
+          (c) => c.track === track.id && (cat === null || c.category === cat),
         ),
       })),
-    [tag],
+    [cat],
   )
 
   return (
@@ -178,26 +175,33 @@ export default function TrainingPortfolio() {
         </p>
 
         {/* Topic filter */}
-        <div className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[12px]">
-          <span className="text-body/50">Filter</span>
+        <div className="mt-8 flex flex-wrap gap-2">
           <button
             type="button"
-            onClick={() => setTag(null)}
-            className={tag === null ? 'font-medium text-river' : 'text-body hover:text-river'}
+            onClick={() => setCat(null)}
+            aria-pressed={cat === null}
+            className={`rounded-full border px-3.5 py-1.5 text-[13px] transition-colors ${
+              cat === null
+                ? 'border-river bg-river text-paper'
+                : 'border-border text-body hover:border-river hover:text-river'
+            }`}
           >
-            All
+            All topics
           </button>
-          {allTags.map((t) => (
-            <span key={t} className="flex items-center">
-              <span className="mx-1.5 text-border">·</span>
-              <button
-                type="button"
-                onClick={() => setTag((cur) => (cur === t ? null : t))}
-                className={tag === t ? 'font-medium text-river' : 'text-body hover:text-river'}
-              >
-                {t}
-              </button>
-            </span>
+          {trainingCategories.map((c) => (
+            <button
+              key={c.id}
+              type="button"
+              onClick={() => setCat((cur) => (cur === c.id ? null : c.id))}
+              aria-pressed={cat === c.id}
+              className={`rounded-full border px-3.5 py-1.5 text-[13px] transition-colors ${
+                cat === c.id
+                  ? 'border-river bg-river text-paper'
+                  : 'border-border text-body hover:border-river hover:text-river'
+              }`}
+            >
+              {c.label}
+            </button>
           ))}
         </div>
 
@@ -216,7 +220,8 @@ export default function TrainingPortfolio() {
 
               {total === 0 ? (
                 <p className="mt-5 text-[13px] text-body/60">
-                  Nothing in this track matches the “{tag}” filter.
+                  Nothing in this track under{' '}
+                  {trainingCategories.find((c) => c.id === cat)?.label}.
                 </p>
               ) : (
                 <div className="mt-5 grid gap-3 lg:grid-cols-2">
