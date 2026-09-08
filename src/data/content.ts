@@ -524,8 +524,6 @@ export type Course = {
   code: string
   title: string
   term: string
-  /** If set, the course has a detail page at /training/<slug>. */
-  slug?: string
 }
 
 // For-credit LUMS courses taught by WIT faculty, from /teaching-and-training.
@@ -540,7 +538,6 @@ export const courses: Course[] = [
     code: 'ENGG562 / ENV462',
     title: 'Climate Change Governance: Science, Data & Models',
     term: 'Fall 2025',
-    slug: 'climate-governance',
   },
 ]
 
@@ -555,135 +552,6 @@ export const trainingCategories: { id: TrainingCategory; label: string }[] = [
   { id: 'leadership', label: 'Leadership & communication' },
 ]
 
-export type CourseDetail = {
-  slug: string
-  /** Catalogue code, e.g. 'T9' — numbered in sequence with the programmes. */
-  code: string
-  /** University course number(s), e.g. 'ENGG 562 / ENV 462'. */
-  refCode: string
-  title: string
-  term: string
-  /** Track this course is listed under in the training catalogue. */
-  track: 'executive' | 'professional' | 'technical'
-  tagline: string
-  category: TrainingCategory
-  cadence: string
-  overview: string
-  modules: {
-    name: string
-    weeks: string
-    summary: string
-    objectives: string[]
-    guiding: string
-  }[]
-  outcomes: { id: string; text: string }[]
-  prerequisites: { code: string; text: string }[]
-  project: string
-}
-
-// Condensed detail for courses that have a `slug`. Transcribed and
-// trimmed from the course-info page — week-by-week schedule, grading
-// tables and course policies are intentionally not reproduced here.
-export const courseDetails: Record<string, CourseDetail> = {
-  'climate-governance': {
-    slug: 'climate-governance',
-    code: 'T9',
-    refCode: 'ENGG 562 / ENV 462',
-    title: 'Climate Change Governance: Science, Data & Models',
-    term: 'Fall 2025',
-    track: 'technical',
-    tagline:
-      'A for-credit LUMS course on the science, international policy and integrated-assessment modelling of climate change.',
-    category: 'climate',
-    cadence: '14 weeks · 4 modules · two 75-minute lectures per week · team capstone project',
-    overview:
-      'A course on the science, policy and modelling of climate change, taught jointly as the graduate ENGG 562 and the undergraduate ENV 462. It moves from the physical basis of the greenhouse effect through the international policy architecture and scenario-based integrated assessment to the energy, water and agriculture nexus, and closes with a team capstone that applies the course’s modelling tools to a real nexus problem in the Indus Basin context.',
-    modules: [
-      {
-        name: 'Climate Science Foundations',
-        weeks: 'Weeks 1 to 3',
-        summary:
-          'The physical basis of the greenhouse effect and the history of its discovery and confirmation, from Fourier’s 1824 hypothesis through Hansen’s 1988 congressional testimony to CMIP7.',
-        objectives: [
-          'Explain Earth’s energy balance and the carbon cycle.',
-          'Trace the development of climate science from early hypothesis to modern model intercomparison.',
-          'Interpret observational climate data and distinguish forcing, feedback and noise.',
-        ],
-        guiding: 'What evidence distinguishes anthropogenic warming from natural climate variability?',
-      },
-      {
-        name: 'Policy Landscape',
-        weeks: 'Weeks 4 to 5',
-        summary:
-          'The institutional and political processes through which climate policy is formulated and implemented at the international and national levels.',
-        objectives: [
-          'Describe the role of energy, water and land use (AFOLU) in the structure of the modern economy.',
-          'Explain the structure of the UNFCCC, the Paris Agreement and Nationally Determined Contributions.',
-          'Assess the Enhanced Transparency Framework as a mechanism for holding countries to their commitments.',
-        ],
-        guiding:
-          'Given near-universal agreement that climate change requires a response, what accounts for the persistent difficulty of coordinated international action?',
-      },
-      {
-        name: 'Scenarios & Integrated Assessment',
-        weeks: 'Weeks 6 to 8',
-        summary:
-          'The scenario-based tools researchers and governments use to evaluate policy before implementation, and their methodological limitations.',
-        objectives: [
-          'Explain the function of an SSP narrative and the rationale for scenario families rather than single forecasts.',
-          'Use an integrated assessment model to trace the outcome of a mitigation pathway.',
-          'Connect carbon-pricing and fiscal mechanisms to national policy case studies.',
-        ],
-        guiding:
-          'A model’s output is only as reliable as its assumptions. Which of them warrant the greatest scrutiny?',
-      },
-      {
-        name: 'Energy, Water and Agriculture Nexus',
-        weeks: 'Weeks 9 to 13',
-        summary:
-          'The energy, water and agriculture sectors examined individually, then coupled to expose the trade-offs that arise when a transition in one sector propagates through the others.',
-        objectives: [
-          'Model energy-system trade-offs across decarbonization pathways.',
-          'Quantify water stress and demand at basin scale and relate these to questions of equity.',
-          'Analyze crop and land-use risk under a changing climate and its implications for food security.',
-          'Couple two or more sectors and identify cases where improving one outcome imposes a cost elsewhere.',
-        ],
-        guiding:
-          'When a transition is introduced in one sector, how does it propagate through the other two, and what does that imply for sequencing?',
-      },
-    ],
-    outcomes: [
-      {
-        id: 'CLO1',
-        text: 'Explain the physical drivers of climate change and key metrics such as radiative forcing and carbon budgets.',
-      },
-      {
-        id: 'CLO2',
-        text: 'Critically assess climate policy and reporting frameworks such as NDCs, carbon pricing, and mitigation and adaptation planning.',
-      },
-      {
-        id: 'CLO3',
-        text: 'Apply computational modelling and data-visualization tools to develop pathways for energy, water and agriculture systems.',
-      },
-      {
-        id: 'CLO4',
-        text: 'Interpret and communicate complex scenario results to technical and non-technical audiences.',
-      },
-    ],
-    prerequisites: [
-      {
-        code: 'ENGG 562',
-        text: 'Graduate standing in any major, or EE / CS / MATH / PHYS / CE undergraduates with at least junior standing, or junior standing with instructor permission. Intermediate-level experience with data analytics and visualization in a programming environment (Python, MATLAB, R or C/C++) is required.',
-      },
-      {
-        code: 'ENV 462',
-        text: 'SSE undergraduates with at least junior standing, or instructor permission. Non-SSE undergraduates require junior standing plus any ENV2xx-or-higher course, or instructor permission. Beginner-level experience with data analytics and visualization (Excel, Python or R) is sufficient.',
-      },
-    ],
-    project:
-      'Teams of three to four, formed by Week 4, investigate a falsifiable question in energy, water, agriculture or the interactions among them. The method follows from the question: integrated assessment models such as MESSAGEix or GCAM, land-use tools such as FABLE, decision-science frameworks such as Robust Decision Making, or systems mapping and comparative policy analysis. The project runs through proposal, progress and policy-brief milestones to a Week 14 capstone presentation and an individual defence. A subset of projects each year is selected for publication as short public briefs.',
-  },
-}
 
 // ── Professional Training Portfolio (2026–2027) ──────────────────────
 // Commissioned programmes an institution can book directly, from the
@@ -742,6 +610,8 @@ export type TrainingProgramme = {
   objectives: string[]
   outline: { label: string; focus: string; content: string }[]
   takeaways: string[]
+  /** For programmes distilled from a for-credit LUMS course. */
+  adaptedFrom?: { label: string; href: string }
 }
 
 export const trainingProgrammes: TrainingProgramme[] = [
@@ -1329,6 +1199,56 @@ export const trainingProgrammes: TrainingProgramme[] = [
       'A processing pipeline that can be re-run as new imagery arrives.',
     ],
   },
+  {
+    code: 'T9',
+    track: 'technical',
+    title: 'Climate Change Governance: Science, Data and Models',
+    tagline: 'A three-day version of the LUMS for-credit course on the science, policy and modelling of climate change.',
+    days: 3,
+    format:
+      'Flipped-classroom workshop: short briefings, hands-on scenario-tool sessions and case studies on real datasets, one workstation per participant.',
+    audience:
+      'Analysts, planners and technical staff in climate change, energy, water and planning agencies, and others who commission or review climate policy analysis.',
+    leadFaculty: ['Dr. Muhammad Awais'],
+    category: 'climate',
+    adaptedFrom: {
+      label: 'Climate Change Governance: Science, Data & Models (ENGG 562 / ENV 462)',
+      href: 'https://lums-wit.github.io/climate-futures/',
+    },
+    overview:
+      'Climate, water, energy and food policy behave as one connected system, yet they are still planned sector by sector. This module condenses the LUMS graduate course of the same name into three days: the physical basis of climate change, the governance architecture that turns scientific consensus into commitments, the scenario and integrated-assessment tools used to test a policy before it is adopted, and the energy, water and agriculture nexus where those choices collide. Sessions follow a flipped-classroom format built around real datasets on emissions, water stress and agricultural yields, and close with a policy-brief exercise.',
+    objectives: [
+      'Explain the physical drivers of climate change and read an observational record for forcing, feedback and noise.',
+      'Describe the UNFCCC, the Paris Agreement, Nationally Determined Contributions and carbon pricing, and what the Enhanced Transparency Framework requires.',
+      'Use a scenario explorer and an integrated assessment model to trace a mitigation pathway and identify the assumptions that drive the result.',
+      'Analyse energy, water and agriculture as an interconnected whole and locate the trade-offs a sectoral transition creates elsewhere.',
+      'Synthesise scenario results into a short policy brief for a non-technical decision-maker.',
+    ],
+    outline: [
+      {
+        label: 'Day 1',
+        focus: 'Science and governance',
+        content:
+          "Earth's energy balance and the carbon cycle; reading the observational record; the UNFCCC and Paris architecture, NDCs, carbon pricing and the Enhanced Transparency Framework; a case study on national commitments.",
+      },
+      {
+        label: 'Day 2',
+        focus: 'Scenarios and integrated assessment',
+        content:
+          'SSP narratives and why scenario families are used instead of forecasts; hands-on session with a scenario explorer and an integrated assessment model; tracing a mitigation pathway and stress-testing its assumptions; carbon-pricing and fiscal mechanisms.',
+      },
+      {
+        label: 'Day 3',
+        focus: 'The energy, water and agriculture nexus',
+        content:
+          'Sectoral trade-offs across decarbonization pathways; basin-scale water stress; crop and land-use risk and food security; coupling sectors to expose where one gain imposes a cost elsewhere; a policy-brief synthesis exercise on a nexus problem in the Indus Basin context.',
+      },
+    ],
+    takeaways: [
+      "A one-page policy brief drafted from scenario output on a nexus question of the participant's choosing.",
+      'Working familiarity with the scenario and integrated-assessment tools used in national climate planning.',
+    ],
+  },
 ]
 
 export const trainingPortfolio = {
@@ -1337,32 +1257,29 @@ export const trainingPortfolio = {
     'The Professional Training Portfolio draws on a decade of WIT capacity building: summer and fall schools, short courses for public agencies, and stakeholder workshops on the Indus Basin, the energy and agriculture nexus and climate policy. It sets out programmes that institutions can commission directly, individually or in combination. Every programme is delivered by LUMS faculty and WIT research staff active in the subject they teach, using the models, data and case studies applied in the Centre’s own research and advisory work.',
   terms: [
     {
-      heading: 'Delivery',
-      body: 'Programmes are delivered at the LUMS campus in Lahore, in the teaching laboratories and seminar facilities of the Syed Babar Ali School of Science and Engineering. Executive and professional programmes can also be delivered at a client’s premises or a chosen venue anywhere in Pakistan; technical modules can be delivered on site where suitable computing facilities are available.',
-    },
-    {
-      heading: 'Cohorts and adaptation',
-      body: 'Each programme runs for a closed institutional cohort or as part of a multi-programme package for a single organisation. Scope and duration can be adjusted to an institution’s needs, including an extended five-day treatment of a technical module where a more intensive engagement is required.',
+      heading: 'Format and cohorts',
+      body: 'Each programme is offered to a single institution as a closed cohort, or as a curated sequence of programmes for one organisation. Content, emphasis and duration are tailored to the sponsoring institution’s mandate and the profile of its participants; a technical module may be extended to five days where the engagement warrants a deeper treatment.',
     },
     {
       heading: 'Scheduling',
-      body: 'Multi-day technical modules are most readily scheduled during the LUMS semester breaks (typically June to August and late December to January); two-day executive and professional programmes can run throughout the year. A minimum of six weeks’ notice is requested for confirmed bookings.',
+      body: 'Multi-day technical modules are ordinarily scheduled within the University’s teaching recesses, from June to August and in late December and January. Two-day executive and professional programmes are available throughout the year. Confirmed engagements are secured no later than six weeks before the start date.',
     },
     {
-      heading: 'Also available on request',
-      body: 'Beyond the catalogue, WIT designs short courses individually on the topics below, and can structure bespoke programmes on climate mitigation, adaptation and institutional capacity building.',
+      heading: 'Enquiries',
+      body: 'Institutions are invited to contact the Centre to discuss objectives, participant profiles and preferred dates. Each enquiry receives a written proposal setting out the programme design, the faculty who will lead it and the proposed schedule.',
     },
   ],
+  customIntro:
+    'Programmes outside the published catalogue are developed to a sponsoring institution’s requirements. Recent engagements include tailored executive programmes on climate mitigation, adaptation and institutional capacity, together with focused short courses in the areas below.',
   additionalTopics: [
     'Water accounting',
-    'Water, technology and society interactions (systems thinking for basin-scale development)',
-    'Digital sustainable agriculture',
+    'Water, technology and society interactions for basin-scale development',
+    'Digital agriculture and precision irrigation',
     'Water quality modelling',
     'Environmental flow assessment',
     'Groundwater modelling and management',
     'Canal operations and irrigation scheduling',
     'Negotiation and decision analysis for transboundary water',
-    'Climate mitigation and adaptation capacity building',
   ],
 }
 

@@ -1,19 +1,14 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { ArrowRight, ChevronDown } from 'lucide-react'
+import { ChevronDown, ExternalLink } from 'lucide-react'
 import {
-  courseDetails,
   trainingCategories,
   trainingPortfolio,
   trainingProgrammes,
   trainingTracks,
-  type CourseDetail,
   type TrainingCategory,
   type TrainingProgramme,
 } from '../data/content'
-
-const creditCourses = Object.values(courseDetails)
 
 function ProgrammeCard({ p }: { p: TrainingProgramme }) {
   const [open, setOpen] = useState(false)
@@ -58,6 +53,22 @@ function ProgrammeCard({ p }: { p: TrainingProgramme }) {
           >
             <div className="border-t border-border px-5 pb-6 pt-5">
               <p className="text-[14px] leading-relaxed text-body">{p.overview}</p>
+
+              {p.adaptedFrom && (
+                <p className="mt-3 text-[13px] leading-relaxed text-body">
+                  Adapted from the LUMS for-credit course{' '}
+                  <a
+                    href={p.adaptedFrom.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline items-center font-medium text-river underline underline-offset-2"
+                  >
+                    {p.adaptedFrom.label}
+                    <ExternalLink size={12} className="ml-1 inline align-[-1px]" />
+                  </a>
+                  .
+                </p>
+              )}
 
               <dl className="mt-5 space-y-3 text-[13px]">
                 <div className="sm:flex sm:gap-3">
@@ -115,29 +126,6 @@ function ProgrammeCard({ p }: { p: TrainingProgramme }) {
   )
 }
 
-function CourseCard({ c }: { c: CourseDetail }) {
-  return (
-    <Link
-      to={`/training/${c.slug}`}
-      className="flex items-start gap-4 rounded-lg border border-border bg-paper p-5 transition-colors hover:border-river"
-    >
-      <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded bg-river-tint font-mono text-[12px] font-semibold text-river">
-        {c.code}
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="block text-[15px] font-semibold text-ink">{c.title}</span>
-        <span className="mt-1 block text-[13px] leading-snug text-body">{c.tagline}</span>
-        <span className="mt-2 flex items-center gap-1 text-[12px] text-body/60">
-          For-credit LUMS course ({c.refCode})
-        </span>
-        <span className="mt-1.5 flex items-center gap-1 text-[12px] font-medium text-river">
-          View outline <ArrowRight size={12} />
-        </span>
-      </span>
-    </Link>
-  )
-}
-
 export default function TrainingPortfolio() {
   const [cat, setCat] = useState<TrainingCategory | null>(null)
 
@@ -147,9 +135,6 @@ export default function TrainingPortfolio() {
         track,
         programmes: trainingProgrammes.filter(
           (p) => p.track === track.id && (cat === null || p.category === cat),
-        ),
-        courses: creditCourses.filter(
-          (c) => c.track === track.id && (cat === null || c.category === cat),
         ),
       })),
     [cat],
@@ -202,8 +187,8 @@ export default function TrainingPortfolio() {
         </div>
 
         {/* Track-grouped sections */}
-        {groups.map(({ track, programmes, courses }) => {
-          const total = programmes.length + courses.length
+        {groups.map(({ track, programmes }) => {
+          const total = programmes.length
           return (
             <section key={track.id} id={track.id} className="mt-12 scroll-mt-24">
               <div className="flex items-baseline gap-3 border-b border-border pb-3">
@@ -224,31 +209,37 @@ export default function TrainingPortfolio() {
                   {programmes.map((p) => (
                     <ProgrammeCard key={p.code} p={p} />
                   ))}
-                  {courses.map((c) => (
-                    <CourseCard key={c.slug} c={c} />
-                  ))}
                 </div>
               )}
             </section>
           )
         })}
 
-        {/* Commissioning & delivery */}
-        <div className="mt-16 border-t border-border pt-8">
-          <h3 className="text-[15px] font-semibold text-ink">Commissioning &amp; delivery</h3>
-          <dl className="mt-4 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+        {/* Commissioning and delivery */}
+        <div className="mt-16 border-t border-border pt-10">
+          <h3 className="text-lg font-semibold text-ink lg:text-xl">Commissioning and delivery</h3>
+          <dl className="mt-5 grid gap-x-12 gap-y-6 sm:grid-cols-2">
             {trainingPortfolio.terms.map((t) => (
               <div key={t.heading}>
                 <dt className="text-[13px] font-semibold text-ink">{t.heading}</dt>
-                <dd className="mt-1 text-[13px] leading-relaxed text-body">{t.body}</dd>
+                <dd className="mt-1.5 text-[13px] leading-relaxed text-body">{t.body}</dd>
               </div>
             ))}
           </dl>
-          <div className="mt-5">
-            <p className="text-[13px] font-semibold text-ink">Also available on request</p>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-body">
-              {trainingPortfolio.additionalTopics.join(' · ')}
+
+          <div className="mt-10 border-t border-border pt-8">
+            <h3 className="text-lg font-semibold text-ink lg:text-xl">Custom programmes</h3>
+            <p className="mt-3 max-w-2xl text-[13px] leading-relaxed text-body lg:text-[14px]">
+              {trainingPortfolio.customIntro}
             </p>
+            <ul className="mt-4 grid gap-x-12 gap-y-2 sm:grid-cols-2">
+              {trainingPortfolio.additionalTopics.map((t) => (
+                <li key={t} className="flex gap-2.5 text-[13px] leading-relaxed text-body">
+                  <span aria-hidden className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-river" />
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

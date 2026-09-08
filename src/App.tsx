@@ -8,7 +8,6 @@ import Technology from './pages/Technology'
 import Impact from './pages/Impact'
 import ProjectsPage from './pages/ProjectsPage'
 import TrainingPage from './pages/TrainingPage'
-import CourseDetail from './pages/CourseDetail'
 import PeoplePage from './pages/PeoplePage'
 import News from './pages/News'
 
@@ -33,7 +32,6 @@ function App() {
           <Route path="impact" element={<Impact />} />
           <Route path="projects" element={<ProjectsPage />} />
           <Route path="training" element={<TrainingPage />} />
-          <Route path="training/:courseId" element={<CourseDetail />} />
           <Route path="people" element={<PeoplePage />} />
           <Route path="news" element={<News />} />
         </Route>

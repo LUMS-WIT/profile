@@ -8,7 +8,6 @@ const TRACK_LINKS = [
   { href: '#technical', label: 'Technical modules' },
 ]
 
-const otherCourses = courses.filter((c) => !c.slug)
 
 export default function Trainings() {
   return (
@@ -84,17 +83,17 @@ export default function Trainings() {
                 For-credit LUMS courses
               </h2>
               <p className="mt-4 text-[15px] leading-relaxed text-body">
-                Taught by WIT faculty within LUMS degree programmes. The climate governance course is
-                listed under{' '}
+                Taught by WIT faculty within LUMS degree programmes. A condensed three-day version of
+                the climate governance course is offered as module{' '}
                 <Link to="/training#technical" className="text-river hover:underline">
-                  Technical modules
+                  T9
                 </Link>{' '}
-                above.
+                in the catalogue above.
               </p>
             </div>
 
             <ul className="divide-y divide-border overflow-hidden rounded-lg border border-border bg-paper">
-              {otherCourses.map((c) => (
+              {courses.map((c) => (
                 <li key={c.code} className="flex flex-wrap items-baseline gap-x-6 gap-y-1 px-6 py-4">
                   <span className="w-36 shrink-0 font-mono text-[12px] text-river">{c.code}</span>
                   <span className="min-w-0 flex-1 text-[15px] text-ink">{c.title}</span>
